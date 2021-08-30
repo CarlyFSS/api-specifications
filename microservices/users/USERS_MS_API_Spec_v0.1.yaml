@@ -5,6 +5,7 @@ info:
   description: Simple User API
   version: '0.1'
   
+
 servers:
   - url: 'https://265de5cd-3658-4770-8ba0-5b525904a0d3.mock.pstmn.io/users'
 
@@ -12,7 +13,6 @@ servers:
 paths:
 
     /users:
-    
         post:
             summary: Creates an user
             description: Post description
@@ -35,7 +35,6 @@ paths:
     
   
     /users/{id}:
-
         get:
             summary: Lists an user
             description: List description
@@ -82,6 +81,51 @@ paths:
             responses:
                 '201':
                     description: User has been updated
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+		
+		delete:
+            summary: Deletes an user
+            description: Delete description
+            operationId: DeleteUserService
+            
+            parameters: 
+                -   name: id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                
+            responses:
+                '201':
+                    description: User has been listed
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+
+	/users/{id}/activate:
+        get:
+            summary: Lists an user
+            description: List description
+            operationId: ListUserService
+            
+            parameters: 
+                -   name: id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                
+            responses:
+                '201':
+                    description: User has been listed
                     content:
                         application/json:
                             schema:
@@ -156,5 +200,6 @@ components:
             example: 'DD/MM/YYYY'
         document_number:
             type: string
+            description: Must be an valid 
             example: '999.999.999-99'
         
