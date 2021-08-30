@@ -95,6 +95,10 @@ components:
       required:
         - name
         - email
+        - sex
+        - password
+        - birthdate
+        - document_number
       properties:
         role_id:
             type: string
@@ -112,6 +116,12 @@ components:
             description: Will be encrypted before being stored in DB
             type: string
             example: 'Your password'
+        birthdate:
+            type: string
+            example: 'DD/MM/YYYY'
+        document_number:
+            type: string
+            example: '999.999.999-99'
 
           
     User:
