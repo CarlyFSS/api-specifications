@@ -6,51 +6,86 @@ info:
   version: '0.1'
   
 servers:
-  - url: 'url'
+  - url: 'https://265de5cd-3658-4770-8ba0-5b525904a0d3.mock.pstmn.io/users'
 
 
 paths:
-  /users:
-  
+
+    /users:
     
-    post:
-      summary: Creates an user
-      description: Post description
-      operationId: CreateUserService
-      
-      requestBody:
-        description: Create user infos
-        content:
-          'application/json':
-             schema:
-               $ref: '#/components/schemas/CreateUserDTO'
-               
-      responses:
-        '201':
-          description: User has been created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-    patch:
-      summary: Updates an user
-      description: Post description
-      operationId: CreateUserService
-      
-      requestBody:
-        description: Create user infos
-        content:
-          'application/json':
-             schema:
-               $ref: '#/components/schemas/CreateUserDTO'
-               
-      responses:
-        '201':
-          description: User has been created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
+        post:
+            summary: Creates an user
+            description: Post description
+            operationId: CreateUserService
+            
+            requestBody:
+                description: Create user infos
+                content:
+                    'application/json':
+                        schema:
+                            $ref: '#/components/schemas/CreateUserDTO'
+                    
+            responses:
+                '201':
+                    description: User has been created
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+    
+  
+    /users/{id}:
+
+        get:
+            summary: Lists an user
+            description: List description
+            operationId: ListUserService
+            
+            parameters: 
+                -   name: id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                
+            responses:
+                '201':
+                    description: User has been listed
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+
+        patch:
+            summary: Updates an user
+            description: Patch description
+            operationId: UpdateUserService
+            
+            parameters: 
+                -   name: id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+            
+            requestBody:
+                description: Updates user infos
+                content:
+                    'application/json':
+                        schema:
+                            $ref: '#/components/schemas/CreateUserDTO'
+                
+            responses:
+                '201':
+                    description: User has been updated
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
       
 
 components:
@@ -58,33 +93,43 @@ components:
     CreateUserDTO:
       type: object
       required:
-        - id
         - name
         - email
       properties:
+        role_id:
+            type: string
+            example: 'Role UUID' 
         name:
-          type: string
-          example: 'Your name'
+            type: string
+            example: 'Your name'
         email:
-          type: string
-          example: 'email@email.com'
+            type: string
+            example: 'email@email.com'
+        sex:
+            type: string
+            example: 'Your name'
+        password:
+            description: Will be encrypted before being stored in DB
+            type: string
+            example: 'Your password'
+
           
     User:
       type: object
-      required:
-        - id
-        - name
-        - email
       properties:
         id:
-          type: string
-          description: Must be an valid UUID
-          example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+            type: string
+            description: Must be an valid UUID
+            example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
         name:
-          type: string
-          example: 'Your name'
+            type: string
+            example: 'Your name'
         email:
-          type: string
-          description: Must be an valid email
-          example: 'email@email.com'
+            type: string
+            description: Must be an valid email
+            example: 'email@email.com'
+        password:
+            description: Will be encrypted before being stored in DB
+            type: string
+            example: 'Your password'
         
