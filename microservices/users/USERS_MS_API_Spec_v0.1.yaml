@@ -102,20 +102,22 @@ components:
       properties:
         role_id:
             type: string
+            description: Must be an valid UUID
             example: 'Role UUID' 
         name:
             type: string
             example: 'Your name'
         email:
             type: string
+            description: Must be an valid email like email@email.com
             example: 'email@email.com'
-        sex:
-            type: string
-            example: 'Your name'
         password:
             description: Will be encrypted before being stored in DB
             type: string
             example: 'Your password'
+        sex:
+            type: string
+            example: 'Your name'
         birthdate:
             type: string
             example: 'DD/MM/YYYY'
@@ -131,6 +133,9 @@ components:
             type: string
             description: Must be an valid UUID
             example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+        role_id:
+            type: string
+            example: 'Role UUID' 
         name:
             type: string
             example: 'Your name'
@@ -142,4 +147,14 @@ components:
             description: Will be encrypted before being stored in DB
             type: string
             example: 'Your password'
+        sex:
+            type: string
+            example: 'Your name'
+        birthdate:
+            type: string
+            description: Must be in the format DD/MM/YYYY if not it will generate an error
+            example: 'DD/MM/YYYY'
+        document_number:
+            type: string
+            example: '999.999.999-99'
         
