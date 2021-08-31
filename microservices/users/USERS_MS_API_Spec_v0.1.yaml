@@ -14,6 +14,21 @@ paths:
 
     # Create one Get path
     /roles:
+        get:
+            summary: Lists all roles
+            description: List all avaiable roles
+            operationId: ListAllRolesService
+            tags:
+                - roles
+                    
+            responses:
+                '201':
+                    description: Roles listed
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                $ref: '#/components/schemas/Role'
     
     # Create one Get path
     /roles/{role_id}:
