@@ -12,7 +12,6 @@ servers:
 
 paths:
 
-    # Create one Get path
     /roles:
         get:
             summary: Lists all roles
@@ -29,8 +28,7 @@ paths:
                             schema:
                                 type: array
                                 $ref: '#/components/schemas/Role'
-    
-    # Create one Get path
+
     /roles/{role_id}:
         get:
             summary: Lists an role
@@ -178,6 +176,21 @@ paths:
 
     # Create Get(all addresses) Post and Patch paths
     /users/addresses/{user_id}:
+        get:
+            summary: Lists all user addresses
+            description: List all user addresses by the user_id
+            operationId: ListAllRolesService
+            tags:
+                - roles
+                    
+            responses:
+                '201':
+                    description: Roles listed
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                $ref: '#/components/schemas/Role'
 
     # Create Get and Delete paths
     /users/addresses/{user_id}?{address_id}:
