@@ -179,7 +179,21 @@ components:
             type: string
             example: '999.999.999-99'
 
-          
+    UpdateUserDTO:
+        type: object
+        properties:
+            name:
+                type: string
+                example: 'Your name'
+            email:
+                type: string
+                description: Must be an valid email like email@email.com
+                example: 'email@email.com'
+            password:
+                description: Will be encrypted before being stored in DB
+                type: string
+                example: 'Your password'
+
     User:
       type: object
       properties:
