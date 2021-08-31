@@ -17,8 +17,6 @@ paths:
             summary: Creates an user
             description: Post description
             operationId: CreateUserService
-            tags:
-                - users
             
             requestBody:
                 description: Create user infos
@@ -41,8 +39,6 @@ paths:
             summary: Lists an user
             description: List description
             operationId: ListUserService
-            tags:
-                - users
             
             parameters: 
                 -   name: id
@@ -65,8 +61,6 @@ paths:
             summary: Updates an user
             description: Patch description
             operationId: UpdateUserService
-            tags:
-                - users
             
             parameters: 
                 -   name: id
@@ -96,8 +90,6 @@ paths:
             summary: Deletes an user
             description: Delete description
             operationId: DeleteUserService
-            tags:
-                - users
             
             parameters: 
                 -   name: id
@@ -121,8 +113,6 @@ paths:
             summary: Activates an user
             description: Activate description
             operationId: ActivateUserService
-            tags:
-                - users
             
             parameters: 
                 -   name: id
@@ -179,21 +169,7 @@ components:
             type: string
             example: '999.999.999-99'
 
-    UpdateUserDTO:
-        type: object
-        properties:
-            name:
-                type: string
-                example: 'Your name'
-            email:
-                type: string
-                description: Must be an valid email like email@email.com
-                example: 'email@email.com'
-            password:
-                description: Will be encrypted before being stored in DB
-                type: string
-                example: 'Your password'
-
+          
     User:
       type: object
       properties:
@@ -217,7 +193,7 @@ components:
             example: 'Your password'
         sex:
             type: string
-            example: 'Your name'
+            example: ''Your name''
         birthdate:
             type: string
             description: Must be in the format DD/MM/YYYY if not it will generate an error
