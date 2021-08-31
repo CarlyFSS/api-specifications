@@ -179,34 +179,7 @@ components:
             type: string
             example: '999.999.999-99'
 
-    UpdateUserDTO:
-        type: object
-        properties:
-            role_id:
-                type: string
-                description: Must be an valid UUID
-                example: 'Role UUID' 
-            name:
-                type: string
-                example: 'Your name'
-            email:
-                type: string
-                description: Must be an valid email like email@email.com
-                example: 'email@email.com'
-            password:
-                description: Will be encrypted before being stored in DB
-                type: string
-                example: 'Your password'
-            sex:
-                type: string
-                example: 'Your name'
-            birthdate:
-                type: string
-                example: 'DD/MM/YYYY'
-            document_number:
-                type: string
-                example: '999.999.999-99'
-
+          
     User:
       type: object
       properties:
