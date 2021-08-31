@@ -339,12 +339,91 @@ components:
                 example: 'Home'
 
     UpdateAddressDTO:
+        type: object
+        properties:
+            country:
+                type: string
+                example: 'Your country'
+            state:
+                type: string
+                example: 'Your state'
+            city:
+                type: string
+                example: 'Your city'
+            street:
+                type: string
+                example: 'Name of your street'
+            number:
+                type: number
+                description: Must be a number between 0 and 32000
+                example: 'Number of your house'
+            district:
+                type: string
+                example: 'Your district'
+            complement:
+                type: string
+                example: 'A complement to your address'
+            postal_code:
+                type: string
+                description: Must be between 4 and 12 characters
+                example: 'Your postal_code'
+            description:
+                type: string
+                description: If it is null, the system will generate a name like 'Address-1' can be changed after to any name you like
+                example: 'Home'
 
     Phone:
+       type: object
+       properties:
+            id:
+                type: string
+                description: Must be an valid UUID
+                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+            user_id:
+                type: string
+                description: Must be an valid UUID
+                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+            country_code:
+                type: string
+                example: '+99'
+            prefix:
+                type: string
+                example: '099'
+            number: 
+                type: string
+                example: '99999-9999'
+            verified:
+                type: boolean
 
     CreatePhoneDTO:
+        type: object
+        required:
+            - country-code
+            - prefix
+            - number
+        properties:
+            country_code:
+                type: string
+                example: '+99'
+            prefix:
+                type: string
+                example: '099'
+            number: 
+                type: string
+                example: '99999-9999'
 
     UpdatePhoneDTO:
+        type: object
+        properties:
+            country_code:
+                type: string
+                example: '+99'
+            prefix:
+                type: string
+                example: '099'
+            number: 
+                type: string
+                example: '99999-9999'
     
     
 
