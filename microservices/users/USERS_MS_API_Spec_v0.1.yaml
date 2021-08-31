@@ -193,7 +193,7 @@ components:
             example: 'Your password'
         sex:
             type: string
-            example: '{{$randomFullName}}'
+            example: 'Your name'
         birthdate:
             type: string
             description: Must be in the format DD/MM/YYYY if not it will generate an error
