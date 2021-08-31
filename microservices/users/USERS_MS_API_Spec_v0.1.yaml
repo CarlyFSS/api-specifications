@@ -50,7 +50,7 @@ paths:
                         type: string
                 
             responses:
-                '201':
+                '200':
                     description: User has been listed
                     content:
                         application/json:
@@ -79,14 +79,14 @@ paths:
                             $ref: '#/components/schemas/CreateUserDTO'
                 
             responses:
-                '201':
+                '200':
                     description: User has been updated
                     content:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/User'
-		
-		delete:
+
+        delete:
             summary: Deletes an user
             description: Delete description
             operationId: DeleteUserService
@@ -101,18 +101,18 @@ paths:
                         type: string
                 
             responses:
-                '201':
+                '200':
                     description: User has been listed
                     content:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/User'
 
-	/users/{id}/activate:
+    /users/{id}/activate:
         get:
-            summary: Lists an user
-            description: List description
-            operationId: ListUserService
+            summary: Activates an user
+            description: Activate description
+            operationId: ActivateUserService
             
             parameters: 
                 -   name: id
@@ -124,13 +124,13 @@ paths:
                         type: string
                 
             responses:
-                '201':
-                    description: User has been listed
+                '200':
+                    description: User has been activated
                     content:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/User'
-      
+
 
 components:
   schemas:
