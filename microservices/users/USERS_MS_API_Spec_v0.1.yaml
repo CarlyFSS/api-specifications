@@ -12,6 +12,12 @@ servers:
 
 paths:
 
+    # Create one Get path
+    /roles:
+    
+    # Create one Get path
+    /roles/{role_id}:
+
     /users:
         post:
             summary: Creates an user
@@ -35,8 +41,7 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/User'
     
-  
-    /users/{id}:
+    /users/{user_id}:
         get:
             summary: Lists an user
             description: List description
@@ -45,7 +50,7 @@ paths:
                 - users
             
             parameters: 
-                -   name: id
+                -   name: user_id
                     description: 'User UUID'
                     required: true
                     example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
@@ -116,7 +121,7 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/User'
 
-    /users/{id}/activate:
+    /users/{user_id}/activate:
         get:
             summary: Activates an user
             description: Activate description
@@ -125,7 +130,7 @@ paths:
                 - users
             
             parameters: 
-                -   name: id
+                -   name: user_id
                     description: 'User UUID'
                     required: true
                     example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
@@ -141,6 +146,17 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/User'
 
+    # Create Get(all addresses) Post and Patch paths
+    /users/addresses/{user_id}:
+
+    # Create Get and Delete paths
+    /users/addresses/{user_id}?{address_id}:
+
+    # Create Post path
+    /users/phones/{user_id}:
+
+    # Create Patch Delete Get path
+    /users/phones/{user_id}?{phone_id}:
 
 components:
   schemas:
@@ -154,6 +170,39 @@ components:
             name:
                 type: string
                 example: 'Role name'
+
+    User:
+      type: object
+      properties:
+        id:
+            type: string
+            description: Must be an valid UUID
+            example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+        role_id:
+            type: string
+            example: 'Role UUID' 
+        name:
+            type: string
+            example: 'Your name'
+        email:
+            type: string
+            description: Must be an valid email
+            example: 'email@email.com'
+        password:
+            description: Will be encrypted before being stored in DB
+            type: string
+            example: 'Your password'
+        sex:
+            type: string
+            example: 'Your name'
+        birthdate:
+            type: string
+            description: Must be in the format DD/MM/YYYY if not it will generate an error
+            example: 'DD/MM/YYYY'
+        document_number:
+            type: string
+            description: Must be an valid 
+            example: '999.999.999-99'
 
     CreateUserDTO:
       type: object
@@ -205,43 +254,6 @@ components:
                 type: string
                 example: 'Your password'
 
-    User:
-      type: object
-      properties:
-        id:
-            type: string
-            description: Must be an valid UUID
-            example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
-        role_id:
-            type: string
-            example: 'Role UUID' 
-        name:
-            type: string
-            example: 'Your name'
-        email:
-            type: string
-            description: Must be an valid email
-            example: 'email@email.com'
-        password:
-            description: Will be encrypted before being stored in DB
-            type: string
-            example: 'Your password'
-        sex:
-            type: string
-            example: 'Your name'
-        birthdate:
-            type: string
-            description: Must be in the format DD/MM/YYYY if not it will generate an error
-            example: 'DD/MM/YYYY'
-        document_number:
-            type: string
-            description: Must be an valid 
-            example: '999.999.999-99'
-
-    CreateAddressDTO:
-
-    UpdateAddressDTO:
-
     Address:
         type: object
         properties:
@@ -284,11 +296,57 @@ components:
                 description: If it is null, the system will generate a name like 'Address-1' can be changed after to any name you like
                 example: 'Home'
 
+    CreateAddressDTO:
+        type: object
+        required:
+            - country
+            - state
+            - city
+            - street
+            - number
+            - district
+            - postal_code
+        properties:
+            country:
+                type: string
+                example: 'Your country'
+            state:
+                type: string
+                example: 'Your state'
+            city:
+                type: string
+                example: 'Your city'
+            street:
+                type: string
+                example: 'Name of your street'
+            number:
+                type: number
+                description: Must be a number between 0 and 32000
+                example: 'Number of your house'
+            district:
+                type: string
+                example: 'Your district'
+            complement:
+                type: string
+                example: 'A complement to your address'
+            postal_code:
+                type: string
+                description: Must be between 4 and 12 characters
+                example: 'Your postal_code'
+            description:
+                type: string
+                description: If it is null, the system will generate a name like 'Address-1' can be changed after to any name you like
+                example: 'Home'
+
+    UpdateAddressDTO:
+
+    Phone:
+
     CreatePhoneDTO:
 
     UpdatePhoneDTO:
     
-    Phone:
+    
 
 
 
