@@ -179,9 +179,34 @@ paths:
         get:
             summary: Lists all user addresses
             description: List all user addresses by the user_id
-            operationId: ListAllRolesService
+            operationId: ListAllAddressesService
             tags:
-                - roles
+                - addresses
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                    
+            responses:
+                '201':
+                    description: Roles listed
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                $ref: '#/components/schemas/Role'
+
+        post:
+            summary: Create a user address
+            description: Creates a new user address
+            operationId: CreateAddressService
+            tags:
+                - addresses
             
             parameters: 
                 -   name: user_id
