@@ -27,7 +27,8 @@ paths:
                         application/json:
                             schema:
                                 type: array
-                                $ref: '#/components/schemas/Role'
+                                items:
+                                    $ref: '#/components/schemas/Role'
 
     /roles/{role_id}:
         get:
@@ -186,9 +187,9 @@ paths:
 
     /users/addresses/{user_id}:
         get:
-            summary: Lists all user addresses
-            description: List all user addresses by the user_id
-            operationId: ListAllAddressesService
+            summary: Lists all or one user addresses
+            description: If the parameter 'address_id' is equal to *null* if fetches all addresses
+            operationId: ListAddressesService
             tags:
                 - addresses
             
@@ -200,15 +201,23 @@ paths:
                     in: path 
                     schema:
                         type: string
+                -   name: address_id
+                    description: 'Address UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: query 
+                    schema:
+                        type: string
                     
             responses:
-                '201':
+                '200':
                     description: Addresses listed
                     content:
                         application/json:
                             schema:
                                 type: array
-                                $ref: '#/components/schemas/Address'
+                                items:
+                                    $ref: '#/components/schemas/Address'
 
         post:
             summary: Create a user address
@@ -239,40 +248,6 @@ paths:
                     content:
                         application/json:
                             schema:
-                                type: array
-                                $ref: '#/components/schemas/Address'
-
-    /users/addresses/{user_id}?{address_id}:
-        get:
-            summary: Lists a user address
-            description: List a user address by the user_id and address_id
-            operationId: ListAddressService
-            tags:
-                - addresses
-            
-            parameters: 
-                -   name: user_id
-                    description: 'User UUID'
-                    required: true
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
-                    schema:
-                        type: string
-                -   name: address_id
-                    description: 'Address UUID'
-                    required: true
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
-                    schema:
-                        type: string
-
-            responses:
-                '201':
-                    description: Role listed
-                    content:
-                        application/json:
-                            schema:
-                                type: array
                                 $ref: '#/components/schemas/Address'
 
         patch:
@@ -294,7 +269,7 @@ paths:
                     description: 'Address UUID'
                     required: true
                     example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
+                    in: query 
                     schema:
                         type: string
 
@@ -311,7 +286,6 @@ paths:
                     content:
                         application/json:
                             schema:
-                                type: array
                                 $ref: '#/components/schemas/Address'
     
         delete:
@@ -331,9 +305,8 @@ paths:
                         type: string
                 -   name: address_id
                     description: 'Address UUID'
-                    required: true
                     example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
+                    in: query 
                     schema:
                         type: string
             
@@ -343,10 +316,9 @@ paths:
                     content:
                         application/json:
                             schema:
-                                type: array
                                 $ref: '#/components/schemas/Address'
-    
-    
+  
+
     /users/phones/{user_id}:
         post:
             summary: Create a user phone
@@ -377,10 +349,8 @@ paths:
                     content:
                         application/json:
                             schema:
-                                type: array
                                 $ref: '#/components/schemas/Phone'
 
-    /users/phones/{user_id}?{phone_id}:
         get:
             summary: List a user phone
             description: Lists an existing user phone
@@ -400,7 +370,7 @@ paths:
                     description: 'Phone UUID'
                     required: true
                     example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
+                    in: query 
                     schema:
                         type: string
                     
@@ -410,7 +380,6 @@ paths:
                     content:
                         application/json:
                             schema:
-                                type: array
                                 $ref: '#/components/schemas/Phone'
 
         patch:
@@ -432,7 +401,7 @@ paths:
                     description: 'Phone UUID'
                     required: true
                     example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
+                    in: query 
                     schema:
                         type: string
 
@@ -449,7 +418,6 @@ paths:
                     content:
                         application/json:
                             schema:
-                                type: array
                                 $ref: '#/components/schemas/Phone'
 
         delete:
@@ -471,7 +439,7 @@ paths:
                     description: 'Phone UUID'
                     required: true
                     example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
+                    in: query 
                     schema:
                         type: string
                     
@@ -481,7 +449,6 @@ paths:
                     content:
                         application/json:
                             schema:
-                                type: array
                                 $ref: '#/components/schemas/Phone'
 
 components:
