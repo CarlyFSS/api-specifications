@@ -737,7 +737,8 @@ components:
         properties:
             id:
                 type: string
-                description: Must be an valid UUID
+                description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                 example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
             name:
                 type: string
@@ -748,7 +749,8 @@ components:
       properties:
         id:
             type: string
-            description: Must be an valid UUID
+            description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+            pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
             example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
         role_id:
             type: string
@@ -787,8 +789,9 @@ components:
       properties:
         role_id:
             type: string
-            description: Must be an valid UUID
-            example: 'Role UUID' 
+            description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+            pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+            example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
         name:
             type: string
             example: 'Your name'
@@ -815,57 +818,82 @@ components:
         properties:
             name:
                 type: string
-                example: 'Your name'
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                maxLength: 100
+                example: 'John'
             email:
                 type: string
-                description: Must be an valid email like email@email.com
-                example: 'email@email.com'
+                pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+                description: Must be an valid email
+                example: 'john@email.com'
             password:
                 description: Will be encrypted before being stored in DB
+                pattern: ^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*(){}\-__+.]){1,}).{6,250}$
+                maxLength: 250
                 type: string
-                example: 'Your password'
+                example: '*T!.7_QqJw{HJvNMRGQe'
 
     Address:
         type: object
         properties:
             id:
                 type: string
-                description: Must be an valid UUID
+                description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                 example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
             user_id:
                 type: string
-                description: Must be an valid UUID
+                description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                 example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
             country:
                 type: string
-                example: 'Your country'
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                example: 'Brazil'
+                maxLength: 30
             state:
                 type: string
-                example: 'Your state'
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                maxLength: 30
+                example: 'São Paulo'
             city:
                 type: string
-                example: 'Your city'
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                maxLength: 30
+                example: 'St John'
             street:
                 type: string
-                example: 'Name of your street'
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                maxLength: 50
+                example: 'Street Something'
             number:
-                type: number
+                type: integer
+                format: int32
+                minimum: 0
+                maximum: 32000
                 description: Must be a number between 0 and 32000
-                example: 'Number of your house'
+                example: 536
             district:
                 type: string
-                example: 'Your district'
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                maxLength: 30
+                example: 'South District'
             complement:
                 type: string
-                example: 'A complement to your address'
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                maxLength: 30
+                example: 'Next to a red store'
             postal_code:
                 type: string
+                pattern: ^[0-9]{4,12}$
                 minLength: 4
                 maxLength: 12
-                example: 'Your postal_code'
+                example: '99999999'
             description:
                 type: string
-                description: If it is null, the system will generate a name like 'Address-1' can be changed after to any name you like
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                maxLength: 10
+                description: If it is null, the system will generate a name like 'Others' can be changed after to any name you like
                 example: 'Home'
 
     CreateAddressDTO:
@@ -881,34 +909,52 @@ components:
         properties:
             country:
                 type: string
-                example: 'Your country'
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                example: 'Brazil'
+                maxLength: 30
             state:
                 type: string
-                example: 'Your state'
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                maxLength: 30
+                example: 'São Paulo'
             city:
                 type: string
-                example: 'Your city'
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                maxLength: 30
+                example: 'St John'
             street:
                 type: string
-                example: 'Name of your street'
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                maxLength: 50
+                example: 'Street Something'
             number:
-                type: number
+                type: integer
+                format: int32
+                minimum: 0
+                maximum: 32000
                 description: Must be a number between 0 and 32000
-                example: 'Number of your house'
+                example: 536
             district:
                 type: string
-                example: 'Your district'
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                maxLength: 30
+                example: 'South District'
             complement:
                 type: string
-                example: 'A complement to your address'
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                maxLength: 30
+                example: 'Next to a red store'
             postal_code:
-                type: string                
+                type: string
+                pattern: ^[0-9]{4,12}$
                 minLength: 4
                 maxLength: 12
-                example: 'Your postal_code'
+                example: '99999999'
             description:
                 type: string
-                description: If it is null, the system will generate a name like 'Address-1' can be changed after to any name you like
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                maxLength: 10
+                description: If it is null, the system will generate a name like 'Others' can be changed after to any name you like
                 example: 'Home'
 
     UpdateAddressDTO:
@@ -959,7 +1005,9 @@ components:
                 example: '99999999'
             description:
                 type: string
-                description: If it is null, the system will generate a name like 'Address-1' can be changed after to any name you like
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                maxLength: 10
+                description: If it is null, the system will generate a name like 'Others' can be changed after to any name you like
                 example: 'Home'
 
     Phone:
@@ -978,6 +1026,7 @@ components:
             country_code:
                 type: string
                 pattern: ^\+[0-9\-]{1,7}$
+                maxLength: 8
                 example: '+99'
             prefix:
                 type: string
@@ -988,8 +1037,10 @@ components:
                 type: string
                 pattern: ^[0-9]{4,10}$
                 maxLength: 10
-                example: '99999-9999'
+                example: '999999999'
             verified:
+                description: Controls if the user has verified or not the phone number.
+                example: true
                 type: boolean
 
     CreatePhoneDTO:
@@ -1001,26 +1052,38 @@ components:
         properties:
             country_code:
                 type: string
+                pattern: ^\+[0-9\-]{1,7}$
+                maxLength: 8
                 example: '+99'
             prefix:
                 type: string
+                pattern: ^[0-9]{1,4}$
+                maxLength: 4
                 example: '099'
             number: 
                 type: string
-                example: '99999-9999'
+                pattern: ^[0-9]{4,10}$
+                maxLength: 10
+                example: '999999999'
 
     UpdatePhoneDTO:
         type: object
         properties:
             country_code:
                 type: string
+                pattern: ^\+[0-9\-]{1,7}$
+                maxLength: 8
                 example: '+99'
             prefix:
                 type: string
+                pattern: ^[0-9]{1,4}$
+                maxLength: 4
                 example: '099'
             number: 
                 type: string
-                example: '99999-9999'
+                pattern: ^[0-9]{4,10}$
+                maxLength: 10
+                example: '999999999'
     
     # Errors
 
