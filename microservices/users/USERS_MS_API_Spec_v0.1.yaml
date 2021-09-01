@@ -19,7 +19,7 @@ paths:
             description: List all avaiable roles
             operationId: ListAllRolesService
             tags:
-                - roles
+                - Roles
                     
             responses:
                 '200':
@@ -37,7 +37,7 @@ paths:
             description: List a role by ID
             operationId: ListRoleService
             tags:
-                - roles
+                - Roles
 
             parameters: 
                 -   name: role_id
@@ -63,7 +63,7 @@ paths:
             description: Post description
             operationId: CreateUserService
             tags:
-                - users
+                - Users
             
             requestBody:
                 description: Create user infos
@@ -86,7 +86,7 @@ paths:
             description: List description
             operationId: ListUserService
             tags:
-                - users
+                - Users
             
             parameters: 
                 -   name: user_id
@@ -110,7 +110,7 @@ paths:
             description: Patch description
             operationId: UpdateUserService
             tags:
-                - users
+                - Users
             
             parameters: 
                 -   name: user_id
@@ -141,7 +141,7 @@ paths:
             description: Delete description
             operationId: DeleteUserService
             tags:
-                - users
+                - Users
             
             parameters: 
                 -   name: user_id
@@ -166,7 +166,7 @@ paths:
             description: Activate description
             operationId: ActivateUserService
             tags:
-                - users
+                - Users
             
             parameters: 
                 -   name: user_id
@@ -185,14 +185,14 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/User'
 
-
+    # Addresses routes
     /users/addresses/{user_id}:
         get:
             summary: Lists all or one user addresses
             description: If the parameter 'address_id' is equal to *null* if fetches all addresses
             operationId: ListAddressesService
             tags:
-                - addresses
+                - Addresses
             
             parameters: 
                 -   name: user_id
@@ -224,7 +224,7 @@ paths:
             description: Creates a new user address
             operationId: CreateAddressService
             tags:
-                - addresses
+                - Addresses
             
             parameters: 
                 -   name: user_id
@@ -255,7 +255,7 @@ paths:
             description: Updates an existing user address
             operationId: UpdateAddressService
             tags:
-                - addresses
+                - Addresses
             
             parameters: 
                 -   name: user_id
@@ -293,7 +293,7 @@ paths:
             description: Deletes an existing user address
             operationId: DeleteAddressService
             tags:
-                - addresses
+                - Addresses
             
             parameters: 
                 -   name: user_id
