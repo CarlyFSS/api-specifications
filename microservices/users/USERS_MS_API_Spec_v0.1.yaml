@@ -916,20 +916,28 @@ components:
         properties:
             country:
                 type: string
-                example: 'Your country'
+                pattern: 
+                example: 'Brazil'
             state:
                 type: string
-                example: 'Your state'
+                pattern: 
+                example: 'São Paulo'
             city:
                 type: string
+                pattern: 
                 example: 'Your city'
             street:
                 type: string
-                example: 'Name of your street'
+                pattern: ^[#.0-9a-zA-Z\s,-]+$
+                maxLength: 200
+                example: 'Street Something'
             number:
-                type: number
+                type: integer
+                format: int32
+                minimum: 0
+                maximum: 32000
                 description: Must be a number between 0 and 32000
-                example: 'Number of your house'
+                example: 536
             district:
                 type: string
                 example: 'Your district'
