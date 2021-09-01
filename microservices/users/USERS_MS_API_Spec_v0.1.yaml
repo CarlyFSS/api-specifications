@@ -451,7 +451,7 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/Phone'
                 '400':
-                    description: Bad request
+                    description: Bad request | All bad requests have a descriptive message of what is causing the error
                     content:
                         application/json:
                             schema:
