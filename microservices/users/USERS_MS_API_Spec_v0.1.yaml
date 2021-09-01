@@ -881,34 +881,52 @@ components:
         properties:
             country:
                 type: string
-                example: 'Your country'
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 50
+                example: 'Brazil'
             state:
                 type: string
-                example: 'Your state'
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 50
+                example: 'São Paulo'
             city:
                 type: string
-                example: 'Your city'
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 50
+                example: 'Saint John'
             street:
                 type: string
-                example: 'Name of your street'
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 50
+                example: 'Street Something'
             number:
-                type: number
+                type: integer
+                format: int32
+                minimum: 0
+                maximum: 32000
                 description: Must be a number between 0 and 32000
-                example: 'Number of your house'
+                example: 536
             district:
                 type: string
-                example: 'Your district'
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 30
+                example: 'South District'
             complement:
                 type: string
-                example: 'A complement to your address'
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 30
+                example: 'Next to a red store'
             postal_code:
-                type: string                
+                type: string
+                pattern: ^[0-9]{4,12}$
                 minLength: 4
                 maxLength: 12
                 example: 'Your postal_code'
             description:
                 type: string
-                description: If it is null, the system will generate a name like 'Address-1' can be changed after to any name you like
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 20
+                description: If it is null, the system will store a name like 'Others' can be changed after to any name you like
                 example: 'Home'
 
     UpdateAddressDTO:
