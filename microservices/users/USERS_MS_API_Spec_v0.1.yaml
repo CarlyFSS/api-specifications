@@ -13,6 +13,8 @@ servers:
 
 # Add Healthz route
 # Add v1 to all routes
+# Add errors responses
+# Think about security with roles
 paths:
 
     # Roles routes
@@ -506,7 +508,6 @@ components:
       required:
         - name
         - email
-        - sex
         - password
         - birthdate
         - document_number
