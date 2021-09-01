@@ -199,7 +199,7 @@ paths:
                         application/json:
                             schema:
                                 type: array
-                                $ref: '#/components/schemas/Role'
+                                $ref: '#/components/schemas/Address'
 
         post:
             summary: Create a user address
@@ -224,7 +224,7 @@ paths:
                         application/json:
                             schema:
                                 type: array
-                                $ref: '#/components/schemas/Role'
+                                $ref: '#/components/schemas/Address'
 
     /users/addresses/{user_id}?{address_id}:
         get:
@@ -257,7 +257,7 @@ paths:
                         application/json:
                             schema:
                                 type: array
-                                $ref: '#/components/schemas/Role'
+                                $ref: '#/components/schemas/Address'
 
         patch:
             summary: Updates a user address
