@@ -102,7 +102,7 @@ paths:
                 - users
             
             parameters: 
-                -   name: id
+                -   name: user_id
                     description: 'User UUID'
                     required: true
                     example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
@@ -115,7 +115,7 @@ paths:
                 content:
                     'application/json':
                         schema:
-                            $ref: '#/components/schemas/CreateUserDTO'
+                            $ref: '#/components/schemas/UpdateUserDTO'
                 
             responses:
                 '200':
