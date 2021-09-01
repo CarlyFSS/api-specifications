@@ -384,6 +384,37 @@ paths:
                                 type: array
                                 $ref: '#/components/schemas/Phone'
 
+        patch:
+            summary: Updates a user phone
+            description: Updates an existing user phone
+            operationId: UpdatePhoneService
+            tags:
+                - phones
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                -   name: phone_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                    
+            responses:
+                '201':
+                    description: Phone updated
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                $ref: '#/components/schemas/Phone'
 components:
   schemas:
     Role:
