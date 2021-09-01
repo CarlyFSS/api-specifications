@@ -246,7 +246,7 @@ paths:
                     description: 'Address UUID'
                     required: true
                     example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: query 
+                    in: path 
                     schema:
                         type: string
 
@@ -278,7 +278,7 @@ paths:
                     description: 'Address UUID'
                     required: true
                     example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: query 
+                    in: path 
                     schema:
                         type: string
                     
@@ -310,7 +310,7 @@ paths:
                     description: 'Address UUID'
                     required: true
                     example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: query 
+                    in: path 
                     schema:
                         type: string
             
@@ -352,6 +352,37 @@ paths:
 
     # Create Patch Delete Get path
     /users/phones/{user_id}?{phone_id}:
+        get:
+            summary: List a user phone
+            description: Lists an existing user phone
+            operationId: ListPhoneService
+            tags:
+                - phones
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                -   name: phone_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                    
+            responses:
+                '201':
+                    description: Phone listed
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                $ref: '#/components/schemas/Phone'
 
 components:
   schemas:
