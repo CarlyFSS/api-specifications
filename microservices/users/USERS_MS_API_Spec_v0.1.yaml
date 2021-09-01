@@ -279,7 +279,7 @@ paths:
                     description: 'Address UUID'
                     required: true
                     example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: query 
+                    in: path 
                     schema:
                         type: string
                     
