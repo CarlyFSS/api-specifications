@@ -182,6 +182,15 @@ paths:
             operationId: ListAllRolesService
             tags:
                 - roles
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
                     
             responses:
                 '201':
@@ -194,6 +203,37 @@ paths:
 
     # Create Get and Delete paths
     /users/addresses/{user_id}?{address_id}:
+        get:
+            summary: Lists a user address
+            description: List a user address by the user_id and address_id
+            operationId: ListRoleService
+            tags:
+                - roles
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                -   name: address_id
+                    description: 'Address UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+
+            responses:
+                '201':
+                    description: Role listed
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                $ref: '#/components/schemas/Role'
 
     # Create Post path
     /users/phones/{user_id}:
