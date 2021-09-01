@@ -916,20 +916,21 @@ components:
         properties:
             country:
                 type: string
-                pattern: 
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                 example: 'Brazil'
             state:
                 type: string
-                pattern: 
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                 example: 'São Paulo'
             city:
                 type: string
-                pattern: 
-                example: 'Your city'
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                maxLength: 50
+                example: 'St John'
             street:
                 type: string
-                pattern: ^[#.0-9a-zA-Z\s,-]+$
-                maxLength: 200
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                maxLength: 50
                 example: 'Street Something'
             number:
                 type: integer
@@ -940,13 +941,13 @@ components:
                 example: 536
             district:
                 type: string
-                pattern: ^[#.0-9a-zA-Z\s,-]+$
-                maxLength: 200
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                maxLength: 30
                 example: 'South District'
             complement:
                 type: string
-                pattern: ^[#.0-9a-zA-Z\s,-]+$
-                maxLength: 200
+                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                maxLength: 30
                 example: 'Next to a red store'
             postal_code:
                 type: string
