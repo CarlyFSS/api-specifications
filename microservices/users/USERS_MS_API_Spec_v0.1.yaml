@@ -231,9 +231,9 @@ paths:
         get:
             summary: Lists a user address
             description: List a user address by the user_id and address_id
-            operationId: ListRoleService
+            operationId: ListAddressService
             tags:
-                - roles
+                - addresses
             
             parameters: 
                 -   name: user_id
@@ -247,7 +247,7 @@ paths:
                     description: 'Address UUID'
                     required: true
                     example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
+                    in: query 
                     schema:
                         type: string
 
@@ -279,7 +279,7 @@ paths:
                     description: 'Address UUID'
                     required: true
                     example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
+                    in: query 
                     schema:
                         type: string
                     
