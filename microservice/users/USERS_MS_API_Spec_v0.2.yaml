@@ -1,0 +1,1058 @@
+openapi: 3.0.0
+
+info:
+  title: Users API
+  description: Simple User API
+  version: '0.1'
+
+# Add Healthz route
+# Add v1 to all routes
+# Add errors responses
+# Think about security with roles
+paths:
+
+    # Roles routes
+    /roles:
+        get:
+            summary: Lists all roles
+            description: List all avaiable roles
+            operationId: ListAllRolesService
+            tags:
+                - Roles
+                    
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/Role'
+                '400':
+                    description: Bad Request | Data is not valid 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error400'
+                '404':
+                    description: Not Found | ID does not exist 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error404'
+                '429':
+                    description: Too many requests
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error429'
+
+    /roles/{role_id}:
+        get:
+            summary: Lists an role
+            description: List a role by ID
+            operationId: ListRoleService
+            tags:
+                - Roles
+
+            parameters: 
+                -   name: role_id
+                    description: 'Role UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                    
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Role'
+                '400':
+                    description: Bad Request | Data is not valid 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error400'
+                '404':
+                    description: Not Found | ID does not exist 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error404'
+                '429':
+                    description: Too many requests
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error429'
+
+    # Users routes
+    /users:
+        post:
+            summary: Creates an user
+            description: Post description
+            operationId: CreateUserService
+            tags:
+                - Users
+            
+            requestBody:
+                description: Create user infos
+                content:
+                    'application/json':
+                        schema:
+                            $ref: '#/components/schemas/CreateUserDTO'
+                    
+            responses:
+                '201':
+                    description: Created
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+                '400':
+                    description: Bad Request | Data is not valid 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error400'
+                '404':
+                    description: Not Found | ID does not exist 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error404'
+                '429':
+                    description: Too many requests
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error429'
+    
+    /users/{user_id}:
+        get:
+            summary: Lists an user
+            description: List description
+            operationId: ListUserService
+            tags:
+                - Users
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+                '400':
+                    description: Bad Request | Data is not valid 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error400'
+                '404':
+                    description: Not Found | ID does not exist 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error404'
+                '429':
+                    description: Too many requests
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error429'
+
+        patch:
+            summary: Updates an user
+            description: Patch description
+            operationId: UpdateUserService
+            tags:
+                - Users
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+            
+            requestBody:
+                description: Updates user infos
+                content:
+                    'application/json':
+                        schema:
+                            $ref: '#/components/schemas/UpdateUserDTO'
+                
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+                '400':
+                    description: Bad Request | Data is not valid 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error400'
+                '404':
+                    description: Not Found | ID does not exist 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error404'
+                '429':
+                    description: Too many requests
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error429'
+
+        delete:
+            summary: Deletes an user
+            description: Delete description
+            operationId: DeleteUserService
+            tags:
+                - Users
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+                '400':
+                    description: Bad Request | Data is not valid 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error400'
+                '404':
+                    description: Not Found | ID does not exist 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error404'
+                '429':
+                    description: Too many requests
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error429'
+
+    /users/{user_id}/activate:
+        get:
+            summary: Activates an user
+            description: Activate description
+            operationId: ActivateUserService
+            tags:
+                - Users
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+                '400':
+                    description: Bad Request | Data is not valid 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error400'
+                '404':
+                    description: Not Found | ID does not exist 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error404'
+                '429':
+                    description: Too many requests
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error429'
+
+    # Addresses routes
+    /users/addresses/{user_id}:
+        get:
+            summary: Lists all or one user addresses
+            description: If the parameter 'address_id' is equal to *null* if fetches all addresses
+            operationId: ListAddressesService
+            tags:
+                - Addresses
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                -   name: address_id
+                    description: 'Address UUID'
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: query 
+                    schema:
+                        type: string
+                    
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/Address'
+                '400':
+                    description: Bad Request | Data is not valid 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error400'
+                '404':
+                    description: Not Found | ID does not exist 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error404'
+                '429':
+                    description: Too many requests
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error429'
+
+        post:
+            summary: Create a user address
+            description: Creates a new user address
+            operationId: CreateAddressService
+            tags:
+                - Addresses
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+
+            requestBody:
+                description: Create address infos
+                content:
+                    'application/json':
+                        schema:
+                            $ref: '#/components/schemas/CreateAddressDTO'
+                    
+            responses:
+                '201':
+                    description: Created
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Address'
+                '400':
+                    description: Bad Request | Data is not valid 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error400'
+                '404':
+                    description: Not Found | ID does not exist 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error404'
+                '429':
+                    description: Too many requests
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error429'
+
+        patch:
+            summary: Updates a user address
+            description: Updates an existing user address
+            operationId: UpdateAddressService
+            tags:
+                - Addresses
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                -   name: address_id
+                    description: 'Address UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: query 
+                    schema:
+                        type: string
+
+            requestBody:
+                description: Update address infos
+                content:
+                    'application/json':
+                        schema:
+                            $ref: '#/components/schemas/UpdateAddressDTO'
+                    
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Address'
+                '400':
+                    description: Bad Request | Data is not valid 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error400'
+                '404':
+                    description: Not Found | ID does not exist 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error404'
+                '429':
+                    description: Too many requests
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error429'
+    
+        delete:
+            summary: Deletes a user address
+            description: Deletes an existing user address
+            operationId: DeleteAddressService
+            tags:
+                - Addresses
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                -   name: address_id
+                    description: 'Address UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: query 
+                    schema:
+                        type: string
+            
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Address'
+                '400':
+                    description: Bad Request | Data is not valid 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error400'
+                '404':
+                    description: Not Found | ID does not exist 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error404'
+                '429':
+                    description: Too many requests
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error429'
+  
+    # Phones routes
+    /users/phones/{user_id}:
+        post:
+            summary: Create a user phone
+            description: Creates a new user phone
+            operationId: CreatePhoneService
+            tags:
+                - Phones
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+
+            requestBody:
+                description: Create phone infos
+                content:
+                    'application/json':
+                        schema:
+                            $ref: '#/components/schemas/CreatePhoneDTO'
+                    
+            responses:
+                '201':
+                    description: Created
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Phone'
+                '400':
+                    description: Bad Request | Data is not valid 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error400'
+                '404':
+                    description: Not Found | ID does not exist 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error404'
+                '429':
+                    description: Too many requests
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error429'
+
+        get:
+            summary: List a user phone
+            description: Lists an existing user phone
+            operationId: ListPhoneService
+            tags:
+                - Phones
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                -   name: phone_id
+                    description: 'Phone UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: query 
+                    schema:
+                        type: string
+                    
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Phone'
+                
+                '400':
+                    description: Bad Request | Data is not valid 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error400'
+                '404':
+                    description: Not Found | ID does not exist 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error404'
+                '429':
+                    description: Too many requests
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error429'
+
+        patch:
+            summary: Updates a user phone
+            description: Updates an existing user phone
+            operationId: UpdatePhoneService
+            tags:
+                - Phones
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                -   name: phone_id
+                    description: 'Phone UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: query 
+                    schema:
+                        type: string
+
+            requestBody:
+                description: Update phone infos
+                content:
+                    'application/json':
+                        schema:
+                            $ref: '#/components/schemas/UpdatePhoneDTO'
+                    
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Phone'
+                
+                '400':
+                    description: Bad Request | Data is not valid 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error400'
+                '404':
+                    description: Not Found | ID does not exist 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error404'
+                '429':
+                    description: Too many requests
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error429'
+
+        delete:
+            summary: Deletes a user phone
+            description: Deletes an existing user phone
+            operationId: DeletePhoneService
+            tags:
+                - Phones
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                -   name: phone_id
+                    description: 'Phone UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: query 
+                    schema:
+                        type: string
+                    
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Phone'
+                '400':
+                    description: Bad Request | Data is not valid 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error400'
+                '404':
+                    description: Not Found | ID does not exist 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error404'
+                '429':
+                    description: Too many requests
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error429'
+                'default':
+                    description: Unexpected server error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error500'
+
+
+components:
+  schemas:
+    Role:
+        type: object
+        properties:
+            id:
+                type: string
+                description: Must be an valid UUID
+                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+            name:
+                type: string
+                example: 'Role name'
+
+    User:
+      type: object
+      properties:
+        id:
+            type: string
+            description: Must be an valid UUID
+            example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+        role_id:
+            type: string
+            example: 'Role UUID' 
+        name:
+            type: string
+            example: 'Your name'
+        email:
+            type: string
+            description: Must be an valid email
+            example: 'email@email.com'
+        password:
+            description: Will be encrypted before being stored in DB
+            type: string
+            example: 'Your password'
+        sex:
+            type: string
+            example: 'Your name'
+        birthdate:
+            type: string
+            description: Must be in the format DD/MM/YYYY if not it will generate an error
+            example: 'DD/MM/YYYY'
+        document_number:
+            type: string
+            description: Must be an valid 
+            example: '999.999.999-99'
+
+    CreateUserDTO:
+      type: object
+      required:
+        - name
+        - email
+        - password
+        - birthdate
+        - document_number
+      properties:
+        role_id:
+            type: string
+            description: Must be an valid UUID
+            example: 'Role UUID' 
+        name:
+            type: string
+            example: 'Your name'
+        email:
+            type: string
+            description: Must be an valid email like email@email.com
+            example: 'email@email.com'
+        password:
+            description: Will be encrypted before being stored in DB
+            type: string
+            example: 'Your password'
+        sex:
+            type: string
+            example: 'Your name'
+        birthdate:
+            type: string
+            example: 'DD/MM/YYYY'
+        document_number:
+            type: string
+            example: '999.999.999-99'
+
+    UpdateUserDTO:
+        type: object
+        properties:
+            name:
+                type: string
+                example: 'Your name'
+            email:
+                type: string
+                description: Must be an valid email like email@email.com
+                example: 'email@email.com'
+            password:
+                description: Will be encrypted before being stored in DB
+                type: string
+                example: 'Your password'
+
+    Address:
+        type: object
+        properties:
+            id:
+                type: string
+                description: Must be an valid UUID
+                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+            user_id:
+                type: string
+                description: Must be an valid UUID
+                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+            country:
+                type: string
+                example: 'Your country'
+            state:
+                type: string
+                example: 'Your state'
+            city:
+                type: string
+                example: 'Your city'
+            street:
+                type: string
+                example: 'Name of your street'
+            number:
+                type: number
+                description: Must be a number between 0 and 32000
+                example: 'Number of your house'
+            district:
+                type: string
+                example: 'Your district'
+            complement:
+                type: string
+                example: 'A complement to your address'
+            postal_code:
+                type: string
+                minLength: 4
+                maxLength: 12
+                example: 'Your postal_code'
+            description:
+                type: string
+                description: If it is null, the system will generate a name like 'Address-1' can be changed after to any name you like
+                example: 'Home'
+
+    CreateAddressDTO:
+        type: object
+        required:
+            - country
+            - state
+            - city
+            - street
+            - number
+            - district
+            - postal_code
+        properties:
+            country:
+                type: string
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 50
+                example: 'Brazil'
+            state:
+                type: string
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 50
+                example: 'São Paulo'
+            city:
+                type: string
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 50
+                example: 'Saint John'
+            street:
+                type: string
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 50
+                example: 'Street Something'
+            number:
+                type: integer
+                format: int32
+                minimum: 0
+                maximum: 32000
+                description: Must be a number between 0 and 32000
+                example: 536
+            district:
+                type: string
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 30
+                example: 'South District'
+            complement:
+                type: string
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 30
+                example: 'Next to a red store'
+            postal_code:
+                type: string
+                pattern: ^[0-9]{4,12}$
+                minLength: 4
+                maxLength: 12
+                example: 'Your postal_code'
+            description:
+                type: string
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 20
+                description: If it is null, the system will store a name like 'Others' can be changed after to any name you like
+                example: 'Home'
+
+    UpdateAddressDTO:
+        type: object
+        properties:
+            country:
+                type: string
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 50
+                example: 'Brazil'
+            state:
+                type: string
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 50
+                example: 'São Paulo'
+            city:
+                type: string
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 50
+                example: 'Saint John'
+            street:
+                type: string
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 50
+                example: 'Street Something'
+            number:
+                type: integer
+                format: int32
+                minimum: 0
+                maximum: 32000
+                description: Must be a number between 0 and 32000
+                example: 536
+            district:
+                type: string
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 30
+                example: 'South District'
+            complement:
+                type: string
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 30
+                example: 'Next to a red store'
+            postal_code:
+                type: string
+                pattern: ^[0-9]{4,12}$
+                minLength: 4
+                maxLength: 12
+                example: 'Your postal_code'
+            description:
+                type: string
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 20
+                description: If it is null, the system will store a name like 'Others' can be changed after to any name you like
+                example: 'Home'
+
+    Phone:
+       type: object
+       properties:
+            id:
+                type: string
+                description: Must be an valid UUID
+                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+            user_id:
+                type: string
+                description: Must be an valid UUID
+                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+            country_code:
+                type: string
+                example: '+99'
+            prefix:
+                type: string
+                example: '099'
+            number: 
+                type: string
+                example: '99999-9999'
+            verified:
+                type: boolean
+
+    CreatePhoneDTO:
+        type: object
+        required:
+            - country-code
+            - prefix
+            - number
+        properties:
+            country_code:
+                type: string
+                example: '+99'
+            prefix:
+                type: string
+                example: '099'
+            number: 
+                type: string
+                example: '99999-9999'
+
+    UpdatePhoneDTO:
+        type: object
+        properties:
+            country_code:
+                type: string
+                example: '+99'
+            prefix:
+                type: string
+                example: '099'
+            number: 
+                type: string
+                example: '99999-9999'
+    
+    # Errors
+
+    Error400:
+        type: string
+        description: 'Bad Request Exception'
+        example: '{status_code: "400",message: ID "X" is not a valid UUID!",path: "/v1/users/X/Y",method: "Z",timestamp: "9999-99-99T99:99:99.999Z"}'
+    
+    Error404:
+        type: string
+        description: 'Not Found Exception'
+        example: '{status_code: "400",message: Entity X with ID "Y" does not exists!",path: "/v1/users/X/Y",method: "Z",timestamp: "9999-99-99T99:99:99.999Z"}'
+
+    Error429:
+        type: string
+        description: 'Error: Too many requests'
+        example: '{status_code: "400",message: To many request at users service!",path: "/v1/users/addresses/930445e1-339f-40a4-a91a-50608aedca90/1",method: "DELETE",timestamp: "2021-08-23T19:46:29.852Z"}'
+    
+    Error500:
+        type: string
+        description: 'Error: Too many requests'
+        example: '{status_code: "500",message: Unexpected server error",path: "/v1/users/addresses/930445e1-339f-40a4-a91a-50608aedca90/1",method: "DELETE",timestamp: "2021-08-23T19:46:29.852Z"}'
