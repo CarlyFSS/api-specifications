@@ -415,6 +415,39 @@ paths:
                             schema:
                                 type: array
                                 $ref: '#/components/schemas/Phone'
+
+        delete:
+            summary: Deletes a user phone
+            description: Deletes an existing user phone
+            operationId: DeletePhoneService
+            tags:
+                - phones
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                -   name: phone_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                    
+            responses:
+                '201':
+                    description: Phone deleted
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                $ref: '#/components/schemas/Phone'
+
 components:
   schemas:
     Role:
