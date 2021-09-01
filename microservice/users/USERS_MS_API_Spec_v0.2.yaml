@@ -881,52 +881,34 @@ components:
         properties:
             country:
                 type: string
-                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
-                maxLength: 50
-                example: 'Brazil'
+                example: 'Your country'
             state:
                 type: string
-                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
-                maxLength: 50
-                example: 'São Paulo'
+                example: 'Your state'
             city:
                 type: string
-                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
-                maxLength: 50
-                example: 'Saint John'
+                example: 'Your city'
             street:
                 type: string
-                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
-                maxLength: 50
-                example: 'Street Something'
+                example: 'Name of your street'
             number:
-                type: integer
-                format: int32
-                minimum: 0
-                maximum: 32000
+                type: number
                 description: Must be a number between 0 and 32000
-                example: 536
+                example: 'Number of your house'
             district:
                 type: string
-                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
-                maxLength: 30
-                example: 'South District'
+                example: 'Your district'
             complement:
                 type: string
-                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
-                maxLength: 30
-                example: 'Next to a red store'
+                example: 'A complement to your address'
             postal_code:
-                type: string
-                pattern: ^[0-9]{4,12}$
+                type: string                
                 minLength: 4
                 maxLength: 12
                 example: 'Your postal_code'
             description:
                 type: string
-                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
-                maxLength: 20
-                description: If it is null, the system will store a name like 'Others' can be changed after to any name you like
+                description: If it is null, the system will generate a name like 'Address-1' can be changed after to any name you like
                 example: 'Home'
 
     UpdateAddressDTO:
@@ -934,23 +916,20 @@ components:
         properties:
             country:
                 type: string
-                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
-                maxLength: 50
+                pattern: 
                 example: 'Brazil'
             state:
                 type: string
-                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
-                maxLength: 50
+                pattern: 
                 example: 'São Paulo'
             city:
                 type: string
-                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
-                maxLength: 50
-                example: 'Saint John'
+                pattern: 
+                example: 'Your city'
             street:
                 type: string
-                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
-                maxLength: 50
+                pattern: ^[#.0-9a-zA-Z\s,-]+$
+                maxLength: 200
                 example: 'Street Something'
             number:
                 type: integer
@@ -961,25 +940,23 @@ components:
                 example: 536
             district:
                 type: string
-                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
-                maxLength: 30
+                pattern: ^[#.0-9a-zA-Z\s,-]+$
+                maxLength: 200
                 example: 'South District'
             complement:
                 type: string
-                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
-                maxLength: 30
+                pattern: ^[#.0-9a-zA-Z\s,-]+$
+                maxLength: 200
                 example: 'Next to a red store'
             postal_code:
                 type: string
-                pattern: ^[0-9]{4,12}$
+                pattern: 
                 minLength: 4
                 maxLength: 12
                 example: 'Your postal_code'
             description:
                 type: string
-                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
-                maxLength: 20
-                description: If it is null, the system will store a name like 'Others' can be changed after to any name you like
+                description: If it is null, the system will generate a name like 'Address-1' can be changed after to any name you like
                 example: 'Home'
 
     Phone:
