@@ -279,13 +279,13 @@ paths:
                     description: 'Address UUID'
                     required: true
                     example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
+                    in: query 
                     schema:
                         type: string
                     
             responses:
                 '201':
-                    description: Roles listed
+                    description: Address updated
                     content:
                         application/json:
                             schema:
