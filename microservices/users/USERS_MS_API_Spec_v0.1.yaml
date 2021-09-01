@@ -22,8 +22,8 @@ paths:
                 - roles
                     
             responses:
-                '201':
-                    description: Roles listed
+                '200':
+                    description: Success
                     content:
                         application/json:
                             schema:
@@ -49,8 +49,8 @@ paths:
                         type: string
                     
             responses:
-                '201':
-                    description: Role listed
+                '200':
+                    description: Success
                     content:
                         application/json:
                             schema:
@@ -74,7 +74,7 @@ paths:
                     
             responses:
                 '201':
-                    description: User has been created
+                    description: Created
                     content:
                         application/json:
                             schema:
@@ -99,7 +99,7 @@ paths:
                 
             responses:
                 '200':
-                    description: User has been listed
+                    description: Success
                     content:
                         application/json:
                             schema:
@@ -130,7 +130,7 @@ paths:
                 
             responses:
                 '200':
-                    description: User has been updated
+                    description: Success
                     content:
                         application/json:
                             schema:
@@ -154,7 +154,7 @@ paths:
                 
             responses:
                 '200':
-                    description: User has been listed
+                    description: Success
                     content:
                         application/json:
                             schema:
@@ -179,7 +179,7 @@ paths:
                 
             responses:
                 '200':
-                    description: User has been activated
+                    description: Success
                     content:
                         application/json:
                             schema:
@@ -243,8 +243,8 @@ paths:
                             $ref: '#/components/schemas/CreateAddressDTO'
                     
             responses:
-                '200':
-                    description: Success
+                '201':
+                    description: Created
                     content:
                         application/json:
                             schema:
@@ -312,7 +312,7 @@ paths:
                         type: string
             
             responses:
-                '201':
+                '200':
                     description: Success
                     content:
                         application/json:
