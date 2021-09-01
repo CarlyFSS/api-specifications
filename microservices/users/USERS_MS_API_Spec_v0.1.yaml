@@ -426,6 +426,13 @@ paths:
                     in: path 
                     schema:
                         type: string
+
+            requestBody:
+                description: Update phone infos
+                content:
+                    'application/json':
+                        schema:
+                            $ref: '#/components/schemas/UpdatePhoneDTO'
                     
             responses:
                 '201':
