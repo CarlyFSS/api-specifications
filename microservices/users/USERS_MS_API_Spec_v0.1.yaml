@@ -194,7 +194,7 @@ paths:
                     
             responses:
                 '201':
-                    description: Roles listed
+                    description: Addresses listed
                     content:
                         application/json:
                             schema:
@@ -219,7 +219,7 @@ paths:
                     
             responses:
                 '201':
-                    description: Roles listed
+                    description: Address created
                     content:
                         application/json:
                             schema:
