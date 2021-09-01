@@ -174,7 +174,7 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/User'
 
-    # Create Get(all addresses) Post and Patch paths
+
     /users/addresses/{user_id}:
         get:
             summary: Lists all user addresses
@@ -260,6 +260,37 @@ paths:
                                 type: array
                                 $ref: '#/components/schemas/Role'
 
+        patch:
+            summary: Updates a user address
+            description: Updates an existing user address
+            operationId: UpdateAddressService
+            tags:
+                - addresses
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                -   name: address_id
+                    description: 'Address UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                    
+            responses:
+                '201':
+                    description: Roles listed
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                $ref: '#/components/schemas/Role'
     # Create Post path
     /users/phones/{user_id}:
 
