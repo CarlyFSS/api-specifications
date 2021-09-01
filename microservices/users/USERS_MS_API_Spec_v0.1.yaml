@@ -13,6 +13,7 @@ servers:
 
 paths:
 
+    # Roles routes
     /roles:
         get:
             summary: Lists all roles
@@ -56,7 +57,7 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/Role'
 
-
+    # Users routes
     /users:
         post:
             summary: Creates an user
@@ -319,14 +320,14 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/Address'
   
-
+    # Phones routes
     /users/phones/{user_id}:
         post:
             summary: Create a user phone
             description: Creates a new user phone
             operationId: CreatePhoneService
             tags:
-                - phones
+                - Phones
             
             parameters: 
                 -   name: user_id
@@ -357,7 +358,7 @@ paths:
             description: Lists an existing user phone
             operationId: ListPhoneService
             tags:
-                - phones
+                - Phones
             
             parameters: 
                 -   name: user_id
@@ -388,7 +389,7 @@ paths:
             description: Updates an existing user phone
             operationId: UpdatePhoneService
             tags:
-                - phones
+                - Phones
             
             parameters: 
                 -   name: user_id
@@ -426,7 +427,7 @@ paths:
             description: Deletes an existing user phone
             operationId: DeletePhoneService
             tags:
-                - phones
+                - Phones
             
             parameters: 
                 -   name: user_id
@@ -583,7 +584,8 @@ components:
                 example: 'A complement to your address'
             postal_code:
                 type: string
-                description: Must be between 4 and 12 characters
+                minLength: 4
+                maxLength: 12
                 example: 'Your postal_code'
             description:
                 type: string
@@ -624,8 +626,9 @@ components:
                 type: string
                 example: 'A complement to your address'
             postal_code:
-                type: string
-                description: Must be between 4 and 12 characters
+                type: string                
+                minLength: 4
+                maxLength: 12
                 example: 'Your postal_code'
             description:
                 type: string
@@ -659,7 +662,8 @@ components:
                 example: 'A complement to your address'
             postal_code:
                 type: string
-                description: Must be between 4 and 12 characters
+                minLength: 4
+                maxLength: 12
                 example: 'Your postal_code'
             description:
                 type: string
