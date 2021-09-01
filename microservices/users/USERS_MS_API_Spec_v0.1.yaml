@@ -226,7 +226,6 @@ paths:
                                 type: array
                                 $ref: '#/components/schemas/Role'
 
-    # Create Get and Delete paths
     /users/addresses/{user_id}?{address_id}:
         get:
             summary: Lists a user address
@@ -291,6 +290,29 @@ paths:
                             schema:
                                 type: array
                                 $ref: '#/components/schemas/Role'
+    
+        delete:
+            summary: Deletes a user address
+            description: Deletes an existing user address
+            operationId: DeleteAddressService
+            tags:
+                - addresses
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                -   name: address_id
+                    description: 'Address UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: query 
+                    schema:
+                        type: string
     # Create Post path
     /users/phones/{user_id}:
 
