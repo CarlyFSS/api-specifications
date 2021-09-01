@@ -4,12 +4,6 @@ info:
   title: Users API
   description: Simple User API
   version: '0.1'
-  
-
-servers:
-  - url: 'http://localhost:3000'
-
-
 
 # Add Healthz route
 # Add v1 to all routes
