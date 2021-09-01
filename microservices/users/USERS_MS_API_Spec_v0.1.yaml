@@ -288,6 +288,13 @@ paths:
                     in: path 
                     schema:
                         type: string
+
+            requestBody:
+                description: Update address infos
+                content:
+                    'application/json':
+                        schema:
+                            $ref: '#/components/schemas/UpdateAddressDTO'
                     
             responses:
                 '201':
