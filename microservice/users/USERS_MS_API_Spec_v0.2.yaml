@@ -930,7 +930,7 @@ components:
             street:
                 type: string
                 pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 50
+                maxLength: 200
                 example: 'Street Something'
             number:
                 type: integer
