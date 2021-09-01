@@ -456,7 +456,6 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/Error429'
-                
 
 components:
   schemas:
@@ -728,6 +727,11 @@ components:
                 example: '99999-9999'
     
     # Errors
+
+    Error400:
+        type: string
+        description: 'Bad Request Exception'
+        example: '{status_code: "400",message: Entity X with ID "Y" does not exists!",path: "/v1/users/X/Y",method: "Z",timestamp: "9999-99-99T99:99:99.999Z"}'
 
     Error429:
         type: string
