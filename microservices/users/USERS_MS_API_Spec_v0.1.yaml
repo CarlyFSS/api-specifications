@@ -289,7 +289,7 @@ paths:
                         application/json:
                             schema:
                                 type: array
-                                $ref: '#/components/schemas/Role'
+                                $ref: '#/components/schemas/Address'
     
         delete:
             summary: Deletes a user address
@@ -313,8 +313,42 @@ paths:
                     in: query 
                     schema:
                         type: string
-    # Create Post path
+            
+            responses:
+                '201':
+                    description: Address deleted
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                $ref: '#/components/schemas/Address'
+    
+    
     /users/phones/{user_id}:
+        post:
+            summary: Create a user phone
+            description: Creates a new user phone
+            operationId: CreatePhoneService
+            tags:
+                - phones
+            
+            parameters: 
+                -   name: user_id
+                    description: 'User UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
+                    
+            responses:
+                '201':
+                    description: Phone created
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                $ref: '#/components/schemas/Phone'
 
     # Create Patch Delete Get path
     /users/phones/{user_id}?{phone_id}:
