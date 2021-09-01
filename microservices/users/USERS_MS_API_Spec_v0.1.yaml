@@ -354,6 +354,13 @@ paths:
                     in: path 
                     schema:
                         type: string
+
+            requestBody:
+                description: Create phone infos
+                content:
+                    'application/json':
+                        schema:
+                            $ref: '#/components/schemas/CreatePhoneDTO'
                     
             responses:
                 '201':
@@ -364,7 +371,6 @@ paths:
                                 type: array
                                 $ref: '#/components/schemas/Phone'
 
-    # Create Patch Delete Get path
     /users/phones/{user_id}?{phone_id}:
         get:
             summary: List a user phone
