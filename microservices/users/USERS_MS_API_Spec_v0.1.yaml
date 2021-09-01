@@ -731,5 +731,5 @@ components:
     Error429:
         type: string
         description: 'Error: Too many requests'
-        example: '{\n"status_code": 400,"message": \n"Address with index \"1\" does not exists!","path": "/v1/users/addresses/930445e1-339f-40a4-a91a-50608aedca90/1","method": "DELETE","timestamp": "2021-08-23T19:46:29.852Z"'}
+        example: '{status_code: "400",message: Address with index "X" does not exists!",path: "/v1/users/addresses/930445e1-339f-40a4-a91a-50608aedca90/1",method: "DELETE",timestamp: "2021-08-23T19:46:29.852Z"}'
     
