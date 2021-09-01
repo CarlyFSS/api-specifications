@@ -918,14 +918,16 @@ components:
                 type: string
                 pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                 example: 'Brazil'
+                maxLength: 30
             state:
                 type: string
                 pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                maxLength: 30
                 example: 'São Paulo'
             city:
                 type: string
                 pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 50
+                maxLength: 30
                 example: 'St John'
             street:
                 type: string
@@ -954,7 +956,7 @@ components:
                 pattern: ^[0-9]{4,12}$
                 minLength: 4
                 maxLength: 12
-                example: 'Your postal_code'
+                example: '99999999'
             description:
                 type: string
                 description: If it is null, the system will generate a name like 'Address-1' can be changed after to any name you like
@@ -965,20 +967,27 @@ components:
        properties:
             id:
                 type: string
-                description: Must be an valid UUID
+                description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                 example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
             user_id:
                 type: string
-                description: Must be an valid UUID
+                description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                 example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
             country_code:
                 type: string
+                pattern: ^\+[0-9\-]{1,7}$
                 example: '+99'
             prefix:
                 type: string
+                pattern: ^[0-9]{1,4}$
+                maxLength: 4
                 example: '099'
             number: 
                 type: string
+                pattern: ^[0-9]{4,10}$
+                maxLength: 10
                 example: '99999-9999'
             verified:
                 type: boolean
