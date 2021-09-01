@@ -450,6 +450,12 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/Phone'
+                '400':
+                    description: Bad request
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error400'
                 '429':
                     description: Too many requests
                     content:
