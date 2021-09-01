@@ -7,7 +7,7 @@ info:
   
 
 servers:
-  - url: 'https://265de5cd-3658-4770-8ba0-5b525904a0d3.mock.pstmn.io/users'
+  - url: 'http://localhost:3000'
 
 
 paths:
@@ -203,7 +203,6 @@ paths:
                         type: string
                 -   name: address_id
                     description: 'Address UUID'
-                    required: true
                     example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
                     in: query 
                     schema:
@@ -305,6 +304,7 @@ paths:
                         type: string
                 -   name: address_id
                     description: 'Address UUID'
+                    required: true
                     example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
                     in: query 
                     schema:
