@@ -36,6 +36,15 @@ paths:
             operationId: ListRoleService
             tags:
                 - roles
+
+            parameters: 
+                -   name: role_id
+                    description: 'Role UUID'
+                    required: true
+                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
+                    in: path 
+                    schema:
+                        type: string
                     
             responses:
                 '201':
@@ -388,7 +397,7 @@ paths:
                     schema:
                         type: string
                 -   name: phone_id
-                    description: 'User UUID'
+                    description: 'Phone UUID'
                     required: true
                     example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
                     in: path 
@@ -420,7 +429,7 @@ paths:
                     schema:
                         type: string
                 -   name: phone_id
-                    description: 'User UUID'
+                    description: 'Phone UUID'
                     required: true
                     example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
                     in: path 
@@ -459,7 +468,7 @@ paths:
                     schema:
                         type: string
                 -   name: phone_id
-                    description: 'User UUID'
+                    description: 'Phone UUID'
                     required: true
                     example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
                     in: path 
