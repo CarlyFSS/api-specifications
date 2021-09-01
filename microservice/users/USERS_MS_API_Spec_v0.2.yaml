@@ -930,7 +930,7 @@ components:
             street:
                 type: string
                 pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 200
+                maxLength: 50
                 example: 'Street Something'
             number:
                 type: integer
@@ -951,7 +951,7 @@ components:
                 example: 'Next to a red store'
             postal_code:
                 type: string
-                pattern: 
+                pattern: ^[0-9]{4,12}$
                 minLength: 4
                 maxLength: 12
                 example: 'Your postal_code'
