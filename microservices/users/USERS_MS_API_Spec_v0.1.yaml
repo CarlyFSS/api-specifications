@@ -916,23 +916,23 @@ components:
         properties:
             country:
                 type: string
-                pattern: ^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{0,50}$
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
                 maxLength: 50
                 example: 'Brazil'
             state:
                 type: string
-                pattern: ^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{0,50}$
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
                 maxLength: 50
                 example: 'São Paulo'
             city:
                 type: string
-                pattern: ^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{0,50}$
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
                 maxLength: 50
-                example: 'S'
+                example: 'Saint John'
             street:
                 type: string
-                pattern: ^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{0,100}$
-                maxLength: 100
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 50
                 example: 'Street Something'
             number:
                 type: integer
@@ -943,25 +943,25 @@ components:
                 example: 536
             district:
                 type: string
-                pattern: ^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{0,100}$
-                maxLength: 50
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
+                maxLength: 30
                 example: 'South District'
             complement:
                 type: string
-                pattern: ^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{0,100}$
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
                 maxLength: 30
                 example: 'Next to a red store'
             postal_code:
                 type: string
-                pattern: ^[1-9]\d{4,12}$
+                pattern: ^[0-9]{4,12}$
                 minLength: 4
                 maxLength: 12
                 example: 'Your postal_code'
             description:
                 type: string
-                pattern: ^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{0,100}$
+                pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]{0,50}$/
                 maxLength: 20
-                description: If it is null, the system will generate a name like 'Address-1' can be changed after to any name you like
+                description: If it is null, the system will store a name like 'Others' can be changed after to any name you like
                 example: 'Home'
 
     Phone:
