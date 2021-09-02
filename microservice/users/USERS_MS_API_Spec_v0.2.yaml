@@ -30,23 +30,13 @@ paths:
                                 items:
                                     $ref: '#/components/schemas/Role'
                 '400':
-                    description: Bad Request | Data is not valid 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error400'
+                    $ref: '#/components/responses/Error400'
                 '404':
-                    description: Not Found | ID does not exist 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error404'
+                    $ref: '#/components/responses/Error404'
                 '429':
-                    description: Too many requests
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error429'
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
 
     /roles/{role_id}:
         get:
@@ -73,23 +63,13 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/Role'
                 '400':
-                    description: Bad Request | Data is not valid 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error400'
+                    $ref: '#/components/responses/Error400'
                 '404':
-                    description: Not Found | ID does not exist 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error404'
+                    $ref: '#/components/responses/Error404'
                 '429':
-                    description: Too many requests
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error429'
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
 
     # Users routes
     /users:
@@ -115,23 +95,13 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/User'
                 '400':
-                    description: Bad Request | Data is not valid 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error400'
+                    $ref: '#/components/responses/Error400'
                 '404':
-                    description: Not Found | ID does not exist 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error404'
+                    $ref: '#/components/responses/Error404'
                 '429':
-                    description: Too many requests
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error429'
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
     
     /users/{user_id}:
         get:
@@ -158,23 +128,13 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/User'
                 '400':
-                    description: Bad Request | Data is not valid 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error400'
+                    $ref: '#/components/responses/Error400'
                 '404':
-                    description: Not Found | ID does not exist 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error404'
+                    $ref: '#/components/responses/Error404'
                 '429':
-                    description: Too many requests
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error429'
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
 
         patch:
             summary: Updates an user
@@ -207,23 +167,13 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/User'
                 '400':
-                    description: Bad Request | Data is not valid 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error400'
+                    $ref: '#/components/responses/Error400'
                 '404':
-                    description: Not Found | ID does not exist 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error404'
+                    $ref: '#/components/responses/Error404'
                 '429':
-                    description: Too many requests
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error429'
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
 
         delete:
             summary: Deletes an user
@@ -249,26 +199,18 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/User'
                 '400':
-                    description: Bad Request | Data is not valid 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error400'
+                    $ref: '#/components/responses/Error400'
                 '404':
-                    description: Not Found | ID does not exist 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error404'
+                    $ref: '#/components/responses/Error404'
                 '429':
-                    description: Too many requests
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error429'
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
 
     /users/{user_id}/activate:
         get:
+            security:
+                - JWTAuth: []
             summary: Activates an user
             description: Activate description
             operationId: ActivateUserService
@@ -292,27 +234,19 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/User'
                 '400':
-                    description: Bad Request | Data is not valid 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error400'
+                    $ref: '#/components/responses/Error400'
                 '404':
-                    description: Not Found | ID does not exist 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error404'
+                    $ref: '#/components/responses/Error404'
                 '429':
-                    description: Too many requests
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error429'
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
 
     # Addresses routes
     /users/addresses/{user_id}:
         get:
+            security:
+                - OAuth: [client, sysadmin]
             summary: Lists all or one user addresses
             description: If the parameter 'address_id' is equal to *null* if fetches all addresses
             operationId: ListAddressesService
@@ -320,19 +254,9 @@ paths:
                 - Addresses
             
             parameters: 
-                -   name: user_id
-                    description: 'User UUID'
-                    required: true
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
-                    schema:
-                        type: string
-                -   name: address_id
-                    description: 'Address UUID'
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: query 
-                    schema:
-                        type: string
+                -   $ref: '#/components/parameters/UserID'
+                -   $ref: '#/components/parameters/AddressID'
+                    
                     
             responses:
                 '200':
@@ -344,25 +268,17 @@ paths:
                                 items:
                                     $ref: '#/components/schemas/Address'
                 '400':
-                    description: Bad Request | Data is not valid 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error400'
+                    $ref: '#/components/responses/Error400'
                 '404':
-                    description: Not Found | ID does not exist 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error404'
+                    $ref: '#/components/responses/Error404'
                 '429':
-                    description: Too many requests
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error429'
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
 
         post:
+            security:
+                - OAuth: [client, sysadmin]
             summary: Create a user address
             description: Creates a new user address
             operationId: CreateAddressService
@@ -370,20 +286,10 @@ paths:
                 - Addresses
             
             parameters: 
-                -   name: user_id
-                    description: 'User UUID'
-                    required: true
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
-                    schema:
-                        type: string
+                -   $ref: '#/components/parameters/UserID'
 
             requestBody:
-                description: Create address infos
-                content:
-                    'application/json':
-                        schema:
-                            $ref: '#/components/schemas/CreateAddressDTO'
+                $ref: '#/components/requestBodies/UserID'
                     
             responses:
                 '201':
@@ -393,25 +299,17 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/Address'
                 '400':
-                    description: Bad Request | Data is not valid 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error400'
+                    $ref: '#/components/responses/Error400'
                 '404':
-                    description: Not Found | ID does not exist 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error404'
+                    $ref: '#/components/responses/Error404'
                 '429':
-                    description: Too many requests
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error429'
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
 
         patch:
+            security:
+                - OAuth: [client, sysadmin]
             summary: Updates a user address
             description: Updates an existing user address
             operationId: UpdateAddressService
@@ -419,20 +317,8 @@ paths:
                 - Addresses
             
             parameters: 
-                -   name: user_id
-                    description: 'User UUID'
-                    required: true
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
-                    schema:
-                        type: string
-                -   name: address_id
-                    description: 'Address UUID'
-                    required: true
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: query 
-                    schema:
-                        type: string
+                -   $ref: '#/components/parameters/UserID'
+                -   $ref: '#/components/parameters/AddressIDRequired'
 
             requestBody:
                 description: Update address infos
@@ -449,25 +335,17 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/Address'
                 '400':
-                    description: Bad Request | Data is not valid 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error400'
+                    $ref: '#/components/responses/Error400'
                 '404':
-                    description: Not Found | ID does not exist 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error404'
+                    $ref: '#/components/responses/Error404'
                 '429':
-                    description: Too many requests
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error429'
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
     
         delete:
+            security:
+                - OAuth: [client, sysadmin]
             summary: Deletes a user address
             description: Deletes an existing user address
             operationId: DeleteAddressService
@@ -475,20 +353,8 @@ paths:
                 - Addresses
             
             parameters: 
-                -   name: user_id
-                    description: 'User UUID'
-                    required: true
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
-                    schema:
-                        type: string
-                -   name: address_id
-                    description: 'Address UUID'
-                    required: true
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: query 
-                    schema:
-                        type: string
+                -   $ref: '#/components/parameters/UserID'
+                -   $ref: '#/components/parameters/AddressIDRequired'
             
             responses:
                 '200':
@@ -498,23 +364,13 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/Address'
                 '400':
-                    description: Bad Request | Data is not valid 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error400'
+                    $ref: '#/components/responses/Error400'
                 '404':
-                    description: Not Found | ID does not exist 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error404'
+                    $ref: '#/components/responses/Error404'
                 '429':
-                    description: Too many requests
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error429'
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
   
     # Phones routes
     /users/phones/{user_id}:
@@ -526,13 +382,7 @@ paths:
                 - Phones
             
             parameters: 
-                -   name: user_id
-                    description: 'User UUID'
-                    required: true
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
-                    schema:
-                        type: string
+                - $ref: '#/components/parameters/UserID'
 
             requestBody:
                 description: Create phone infos
@@ -549,23 +399,13 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/Phone'
                 '400':
-                    description: Bad Request | Data is not valid 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error400'
+                    $ref: '#/components/responses/Error400'
                 '404':
-                    description: Not Found | ID does not exist 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error404'
+                    $ref: '#/components/responses/Error404'
                 '429':
-                    description: Too many requests
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error429'
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
 
         get:
             summary: List a user phone
@@ -575,20 +415,8 @@ paths:
                 - Phones
             
             parameters: 
-                -   name: user_id
-                    description: 'User UUID'
-                    required: true
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
-                    schema:
-                        type: string
-                -   name: phone_id
-                    description: 'Phone UUID'
-                    required: true
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: query 
-                    schema:
-                        type: string
+                -   $ref: '#/components/parameters/UserID'
+                -   $ref: '#/components/parameters/PhoneID'
                     
             responses:
                 '200':
@@ -597,25 +425,14 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/Phone'
-                
                 '400':
-                    description: Bad Request | Data is not valid 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error400'
+                    $ref: '#/components/responses/Error400'
                 '404':
-                    description: Not Found | ID does not exist 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error404'
+                    $ref: '#/components/responses/Error404'
                 '429':
-                    description: Too many requests
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error429'
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
 
         patch:
             summary: Updates a user phone
@@ -625,20 +442,8 @@ paths:
                 - Phones
             
             parameters: 
-                -   name: user_id
-                    description: 'User UUID'
-                    required: true
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
-                    schema:
-                        type: string
-                -   name: phone_id
-                    description: 'Phone UUID'
-                    required: true
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: query 
-                    schema:
-                        type: string
+                -   $ref: '#/components/parameters/UserID'
+                -   $ref: '#/components/parameters/PhoneID'
 
             requestBody:
                 description: Update phone infos
@@ -654,25 +459,14 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/Phone'
-                
                 '400':
-                    description: Bad Request | Data is not valid 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error400'
+                    $ref: '#/components/responses/Error400'
                 '404':
-                    description: Not Found | ID does not exist 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error404'
+                    $ref: '#/components/responses/Error404'
                 '429':
-                    description: Too many requests
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error429'
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
 
         delete:
             summary: Deletes a user phone
@@ -682,20 +476,8 @@ paths:
                 - Phones
             
             parameters: 
-                -   name: user_id
-                    description: 'User UUID'
-                    required: true
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
-                    schema:
-                        type: string
-                -   name: phone_id
-                    description: 'Phone UUID'
-                    required: true
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: query 
-                    schema:
-                        type: string
+                -   $ref: '#/components/parameters/UserID'
+                -   $ref: '#/components/parameters/PhoneID'
                     
             responses:
                 '200':
@@ -705,432 +487,572 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/Phone'
                 '400':
-                    description: Bad Request | Data is not valid 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error400'
+                    $ref: '#/components/responses/Error400'
                 '404':
-                    description: Not Found | ID does not exist 
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error404'
+                    $ref: '#/components/responses/Error404'
                 '429':
-                    description: Too many requests
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error429'
+                    $ref: '#/components/responses/Error429'
                 'default':
-                    description: Unexpected server error
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error500'
+                    $ref: '#/components/responses/ErrorDefault'
 
 
 components:
-  schemas:
-    Role:
-        type: object
-        properties:
-            id:
-                type: string
-                description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
-                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
-                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
-            name:
-                type: string
-                example: 'Role name'
+    requestBodies:
+        CreateAddress:
+            required: true
+            description: Create address request body
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/CreateAddressDTO'
+                    encoding:
+                        role:
+                            contentType: string
 
-    User:
-      type: object
-      properties:
-        id:
-            type: string
-            description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
-            pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
-            example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
-        role_id:
-            type: string
-            example: 'Role UUID' 
-        name:
-            type: string
-            example: 'Your name'
-        email:
-            type: string
-            description: Must be an valid email
-            example: 'email@email.com'
-        password:
-            description: Will be encrypted before being stored in DB
-            type: string
-            example: 'Your password'
-        sex:
-            type: string
-            example: 'Your name'
-        birthdate:
-            type: string
-            description: Must be in the format DD/MM/YYYY if not it will generate an error
-            example: 'DD/MM/YYYY'
-        document_number:
-            type: string
-            description: Must be an valid 
-            example: '999.999.999-99'
 
-    CreateUserDTO:
-      type: object
-      required:
-        - name
-        - email
-        - password
-        - birthdate
-        - document_number
-      properties:
-        role_id:
-            type: string
-            description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
-            pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
-            example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
-        name:
-            type: string
-            example: 'Your name'
-        email:
-            type: string
-            description: Must be an valid email like email@email.com
-            example: 'email@email.com'
-        password:
-            description: Will be encrypted before being stored in DB
-            type: string
-            example: 'Your password'
-        sex:
-            type: string
-            example: 'Your name'
-        birthdate:
-            type: string
-            example: 'DD/MM/YYYY'
-        document_number:
-            type: string
-            example: '999.999.999-99'
+    securitySchemes:
+        JWTAuth:
+            type: http
+            scheme: bearer
+            bearerFormat: JWT
 
-    UpdateUserDTO:
-        type: object
-        properties:
-            name:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 100
-                example: 'John'
-            email:
-                type: string
-                pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-                description: Must be an valid email
-                example: 'john@email.com'
-            password:
-                description: Will be encrypted before being stored in DB
-                pattern: ^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*(){}\-__+.]){1,}).{6,250}$
-                maxLength: 250
-                type: string
-                example: '*T!.7_QqJw{HJvNMRGQe'
+        OAuth:
+            type: oauth2
+            flows:
+                authorizationCode:
+                    tokenUrl: 'http://example.com/oauth/token'
+                    authorizationUrl: 'http://example.com/oauth'
+                    scopes:
+                        client: The owner client of the data it is changing
+                        employee: The employee can make avaiable actions in its store
+                        admin: The admin of the store, can make any action in its store
+                        sysadmin: System Owner
 
-    Address:
-        type: object
-        properties:
-            id:
-                type: string
-                description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
-                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
-                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
-            user_id:
-                type: string
-                description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
-                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
-                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
-            country:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                example: 'Brazil'
-                maxLength: 30
-            state:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 30
-                example: 'São Paulo'
-            city:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 30
-                example: 'St John'
-            street:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 50
-                example: 'Street Something'
-            number:
-                type: integer
-                format: int32
-                minimum: 0
-                maximum: 32000
-                description: Must be a number between 0 and 32000
-                example: 536
-            district:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 30
-                example: 'South District'
-            complement:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 30
-                example: 'Next to a red store'
-            postal_code:
-                type: string
-                pattern: ^[0-9]{4,12}$
-                minLength: 4
-                maxLength: 12
-                example: '99999999'
-            description:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 10
-                description: If it is null, the system will generate a name like 'Others' can be changed after to any name you like
-                example: 'Home'
-
-    CreateAddressDTO:
-        type: object
-        required:
-            - country
-            - state
-            - city
-            - street
-            - number
-            - district
-            - postal_code
-        properties:
-            country:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                example: 'Brazil'
-                maxLength: 30
-            state:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 30
-                example: 'São Paulo'
-            city:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 30
-                example: 'St John'
-            street:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 50
-                example: 'Street Something'
-            number:
-                type: integer
-                format: int32
-                minimum: 0
-                maximum: 32000
-                description: Must be a number between 0 and 32000
-                example: 536
-            district:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 30
-                example: 'South District'
-            complement:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 30
-                example: 'Next to a red store'
-            postal_code:
-                type: string
-                pattern: ^[0-9]{4,12}$
-                minLength: 4
-                maxLength: 12
-                example: '99999999'
-            description:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 10
-                description: If it is null, the system will generate a name like 'Others' can be changed after to any name you like
-                example: 'Home'
-
-    UpdateAddressDTO:
-        type: object
-        properties:
-            country:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                example: 'Brazil'
-                maxLength: 30
-            state:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 30
-                example: 'São Paulo'
-            city:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 30
-                example: 'St John'
-            street:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 50
-                example: 'Street Something'
-            number:
-                type: integer
-                format: int32
-                minimum: 0
-                maximum: 32000
-                description: Must be a number between 0 and 32000
-                example: 536
-            district:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 30
-                example: 'South District'
-            complement:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 30
-                example: 'Next to a red store'
-            postal_code:
-                type: string
-                pattern: ^[0-9]{4,12}$
-                minLength: 4
-                maxLength: 12
-                example: '99999999'
-            description:
-                type: string
-                pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
-                maxLength: 10
-                description: If it is null, the system will generate a name like 'Others' can be changed after to any name you like
-                example: 'Home'
-
-    Phone:
-       type: object
-       properties:
-            id:
-                type: string
-                description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
-                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
-                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
-            user_id:
-                type: string
-                description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
-                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
-                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
-            country_code:
-                type: string
-                pattern: ^\+[0-9\-]{1,7}$
-                maxLength: 8
-                example: '+99'
-            prefix:
-                type: string
-                pattern: ^[0-9]{1,4}$
-                maxLength: 4
-                example: '099'
-            number: 
-                type: string
-                pattern: ^[0-9]{4,10}$
-                maxLength: 10
-                example: '999999999'
-            verified:
-                description: Controls if the user has verified or not the phone number.
-                example: true
-                type: boolean
-
-    CreatePhoneDTO:
-        type: object
-        required:
-            - country-code
-            - prefix
-            - number
-        properties:
-            country_code:
-                type: string
-                pattern: ^\+[0-9\-]{1,7}$
-                maxLength: 8
-                example: '+99'
-            prefix:
-                type: string
-                pattern: ^[0-9]{1,4}$
-                maxLength: 4
-                example: '099'
-            number: 
-                type: string
-                pattern: ^[0-9]{4,10}$
-                maxLength: 10
-                example: '999999999'
-
-    UpdatePhoneDTO:
-        type: object
-        properties:
-            country_code:
-                type: string
-                pattern: ^\+[0-9\-]{1,7}$
-                maxLength: 8
-                example: '+99'
-            prefix:
-                type: string
-                pattern: ^[0-9]{1,4}$
-                maxLength: 4
-                example: '099'
-            number: 
-                type: string
-                pattern: ^[0-9]{4,10}$
-                maxLength: 10
-                example: '999999999'
     
-    # Errors
+    schemas:
 
-    Error400:
-        type: string
-        description: 'Error: Bad Request Exception'
-        properties:
-            status_code:
-                type: integer
-                format: int32
-                example: 400
-            message:
-                type: string
-                example: ID "X" is not a valid UUID!"
-            path:
-                type: string
-                example: '"/v1/users/X/Y",method: "Z"'
-            timestamp:
-                type: string
-                example: '9999-99-99T99:99:99.999Z'
-        example:
+        # Roles schemas
+        Role:
             type: object
-            status_code:
-                type: integer
-                format: int32
-                example: 400
-            message:
-                type: string
-                example: ID "X" is not a valid UUID!"
-            path:
-                type: string
-                example: '"/v1/users/X/Y",method: "Z"'
-            timestamp:
-                type: string
-                example: '9999-99-99T99:99:99.999Z'
-    
-    Error404:
-        type: string
-        description: 'Error: Not Found Exception'
-        example: '{status_code: "400",message: Entity X with ID "Y" does not exists!",path: "/v1/users/X/Y",method: "Z",timestamp: "9999-99-99T99:99:99.999Z"}'
+            properties:
+                id:
+                    type: string
+                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+                name:
+                    type: string
+                    example: 'Role name'
 
-    Error429:
-        type: string
-        description: 'Error: Too many requests'
-        example: '{status_code: "429",message: Too many requests at X path,path: "/v1/users/X/Y",method: "Z",timestamp: "9999-99-99T99:99:99.999Z"}'
+        # Users schemas
+        User:
+            type: object
+            properties:
+                id:
+                    type: string
+                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+                role_id:
+                    type: string
+                    example: 'Role UUID' 
+                name:
+                    type: string
+                    example: 'Your name'
+                email:
+                    type: string
+                    description: Must be an valid email
+                    example: 'email@email.com'
+                password:
+                    description: Will be encrypted before being stored in DB
+                    type: string
+                    example: 'Your password'
+                sex:
+                    type: string
+                    example: 'Your name'
+                birthdate:
+                    type: string
+                    description: Must be in the format DD/MM/YYYY if not it will generate an error
+                    example: 'DD/MM/YYYY'
+                document_number:
+                    type: string
+                    description: Must be an valid 
+                    example: '999.999.999-99'
+
+        CreateUserDTO:
+            type: object
+            required:
+                - name
+                - email
+                - password
+                - birthdate
+                - document_number
+            properties:
+                role_id:
+                    type: string
+                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+                name:
+                    type: string
+                    example: 'Your name'
+                email:
+                    type: string
+                    description: Must be an valid email like email@email.com
+                    example: 'email@email.com'
+                password:
+                    description: Will be encrypted before being stored in DB
+                    type: string
+                    example: 'Your password'
+                sex:
+                    type: string
+                    example: 'Your name'
+                birthdate:
+                    type: string
+                    example: 'DD/MM/YYYY'
+                document_number:
+                    type: string
+                    example: '999.999.999-99'
+
+        UpdateUserDTO:
+            type: object
+            properties:
+                name:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 100
+                    example: 'John'
+                email:
+                    type: string
+                    pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+                    description: Must be an valid email
+                    example: 'john@email.com'
+                password:
+                    description: Will be encrypted before being stored in DB
+                    pattern: ^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*(){}\-__+.]){1,}).{6,250}$
+                    maxLength: 250
+                    type: string
+                    example: '*T!.7_QqJw{HJvNMRGQe'
+
+        # Addresses schemas
+        Address:
+            type: object
+            properties:
+                id:
+                    type: string
+                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+                user_id:
+                    type: string
+                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+                country:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    example: 'Brazil'
+                    maxLength: 30
+                state:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'São Paulo'
+                city:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'St John'
+                street:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 50
+                    example: 'Street Something'
+                number:
+                    type: integer
+                    format: int32
+                    minimum: 0
+                    maximum: 32000
+                    description: Must be a number between 0 and 32000
+                    example: 536
+                district:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'South District'
+                complement:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'Next to a red store'
+                postal_code:
+                    type: string
+                    pattern: ^[0-9]{4,12}$
+                    minLength: 4
+                    maxLength: 12
+                    example: '99999999'
+                description:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 10
+                    description: If it is null, the system will generate a name like 'Others' can be changed after to any name you like
+                    example: 'Home'
+
+        CreateAddressDTO:
+            type: object
+            required:
+                - country
+                - state
+                - city
+                - street
+                - number
+                - district
+                - postal_code
+            properties:
+                country:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    example: 'Brazil'
+                    maxLength: 30
+                state:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'São Paulo'
+                city:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'St John'
+                street:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 50
+                    example: 'Street Something'
+                number:
+                    type: integer
+                    format: int32
+                    minimum: 0
+                    maximum: 32000
+                    description: Must be a number between 0 and 32000
+                    example: 536
+                district:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'South District'
+                complement:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'Next to a red store'
+                postal_code:
+                    type: string
+                    pattern: ^[0-9]{4,12}$
+                    minLength: 4
+                    maxLength: 12
+                    example: '99999999'
+                description:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 10
+                    description: If it is null, the system will generate a name like 'Others' can be changed after to any name you like
+                    example: 'Home'
+
+        UpdateAddressDTO:
+            type: object
+            properties:
+                country:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    example: 'Brazil'
+                    maxLength: 30
+                state:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'São Paulo'
+                city:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'St John'
+                street:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 50
+                    example: 'Street Something'
+                number:
+                    type: integer
+                    format: int32
+                    minimum: 0
+                    maximum: 32000
+                    description: Must be a number between 0 and 32000
+                    example: 536
+                district:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'South District'
+                complement:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'Next to a red store'
+                postal_code:
+                    type: string
+                    pattern: ^[0-9]{4,12}$
+                    minLength: 4
+                    maxLength: 12
+                    example: '99999999'
+                description:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 10
+                    description: If it is null, the system will generate a name like 'Others' can be changed after to any name you like
+                    example: 'Home'
+
+        # Phones schemas
+        Phone:
+            type: object
+            properties:
+                id:
+                    type: string
+                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+                user_id:
+                    type: string
+                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+                country_code:
+                    type: string
+                    pattern: ^\+[0-9\-]{1,7}$
+                    maxLength: 8
+                    example: '+99'
+                prefix:
+                    type: string
+                    pattern: ^[0-9]{1,4}$
+                    maxLength: 4
+                    example: '099'
+                number: 
+                    type: string
+                    pattern: ^[0-9]{4,10}$
+                    maxLength: 10
+                    example: '999999999'
+                verified:
+                    description: Controls if the user has verified or not the phone number.
+                    example: true
+                    type: boolean
+
+        CreatePhoneDTO:
+            type: object
+            required:
+                - country-code
+                - prefix
+                - number
+            properties:
+                country_code:
+                    type: string
+                    pattern: ^\+[0-9\-]{1,7}$
+                    maxLength: 8
+                    example: '+99'
+                prefix:
+                    type: string
+                    pattern: ^[0-9]{1,4}$
+                    maxLength: 4
+                    example: '099'
+                number: 
+                    type: string
+                    pattern: ^[0-9]{4,10}$
+                    maxLength: 10
+                    example: '999999999'
+
+        UpdatePhoneDTO:
+            type: object
+            properties:
+                country_code:
+                    type: string
+                    pattern: ^\+[0-9\-]{1,7}$
+                    maxLength: 8
+                    example: '+99'
+                prefix:
+                    type: string
+                    pattern: ^[0-9]{1,4}$
+                    maxLength: 4
+                    example: '099'
+                number: 
+                    type: string
+                    pattern: ^[0-9]{4,10}$
+                    maxLength: 10
+                    example: '999999999'
+
+
+    parameters:
+
+        # Users parameters
+        UserID:
+            name: user_id
+            description: A UUID is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID.
+            required: true
+            in: path 
+            schema:
+                type: string
+                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+        
+        # Roles parameters
+        RoleID:
+            name: role_id
+            description: A UUID is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID.
+            required: true
+            in: path 
+            schema:
+                type: string                
+                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+        
+        # Address parameters
+        AddressIDRequired:
+            name: address_id
+            description: A UUID is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID.
+            required: true
+            in: query 
+            schema:
+                type: string
+                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+        
+        AddressID:
+            name: address_id
+            description: A UUID is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID.
+            required: false
+            in: query 
+            schema:
+                type: string
+                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+
+        # Phones parameters
+        PhoneID:
+            name: phone_id
+            description: A UUID is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID.
+            required: true
+            in: query 
+            schema:
+                type: string
+                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
     
-    Error500:
-        type: string
-        description: 'Error: Too many requests'
-        example: '{status_code: "500",message: Unexpected server error",path: "/v1/users/X/Y",method: "Z",timestamp: "9999-99-99T99:99:99.999Z"}'
+    
+    responses:
+
+
+        # Errors
+        Error400:
+            description: 'Bad Request Exception'
+            content:
+                application/json:
+                    schema:
+                        type: object
+                        properties:
+                            status_code:
+                                type: integer
+                                format: int32
+                                example: 400
+                            message:
+                                type: string
+                                example: 'ID "X" is not a valid UUID!"'
+                            path:
+                                type: string
+                                example: '/v1/users/X/Y'
+                            method:
+                                type: string
+                                example: 'POST'
+                            timestamp:
+                                type: string
+                                example: '9999-99-99T99:99:99.999Z'
+        
+        Error404:
+            description: 'Not Found Exception'
+            content:
+                application/json:
+                    schema:
+                        type: object
+                        properties:
+                            status_code:
+                                type: integer
+                                format: int32
+                                example: 404
+                            message:
+                                type: string
+                                example: 'Entity X with ID "Y" does not exists!'
+                            path:
+                                type: string
+                                example: '/v1/users/X/Y'
+                            method:
+                                type: string
+                                example: 'POST'
+                            timestamp:
+                                type: string
+                                example: '9999-99-99T99:99:99.999Z'
+
+        Error429:
+            description: 'Too Many Requests Exception'
+            content:
+                application/json:
+                    schema:
+                        type: object
+                        properties:
+                            status_code:
+                                type: integer
+                                format: int32
+                                example: 429
+                            message:
+                                type: string
+                                example: 'Too many requests at X path'
+                            path:
+                                type: string
+                                example: '/v1/users/X/Y'
+                            method:
+                                type: string
+                                example: 'POST'
+                            timestamp:
+                                type: string
+                                example: '9999-99-99T99:99:99.999Z'
+        
+        ErrorDefault:
+            description: 'Internal Server Error Exception '
+            content:
+                application/json:
+                    schema:
+                        type: object
+                        properties:
+                            status_code:
+                                type: integer
+                                format: int32
+                                example: 500
+                            message:
+                                type: string
+                                example: 'Internal Server Error'
+                            path:
+                                type: string
+                                example: '/v1/users/X/Y'
+                            method:
+                                type: string
+                                example: 'POST'
+                            timestamp:
+                                type: string
+                                example: '9999-99-99T99:99:99.999Z'
+
+
+
+
+
+
+
+
+
+
+
