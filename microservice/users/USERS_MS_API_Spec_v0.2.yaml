@@ -1089,20 +1089,48 @@ components:
 
     Error400:
         type: string
-        description: 'Bad Request Exception'
-        example: '{status_code: "400",message: ID "X" is not a valid UUID!",path: "/v1/users/X/Y",method: "Z",timestamp: "9999-99-99T99:99:99.999Z"}'
+        description: 'Error: Bad Request Exception'
+        properties:
+            status_code:
+                type: integer
+                format: int32
+                example: 400
+            message:
+                type: string
+                example: ID "X" is not a valid UUID!"
+            path:
+                type: string
+                example: '"/v1/users/X/Y",method: "Z"'
+            timestamp:
+                type: string
+                example: '9999-99-99T99:99:99.999Z'
+        example:
+            type: object
+            status_code:
+                type: integer
+                format: int32
+                example: 400
+            message:
+                type: string
+                example: ID "X" is not a valid UUID!"
+            path:
+                type: string
+                example: '"/v1/users/X/Y",method: "Z"'
+            timestamp:
+                type: string
+                example: '9999-99-99T99:99:99.999Z'
     
     Error404:
         type: string
-        description: 'Not Found Exception'
+        description: 'Error: Not Found Exception'
         example: '{status_code: "400",message: Entity X with ID "Y" does not exists!",path: "/v1/users/X/Y",method: "Z",timestamp: "9999-99-99T99:99:99.999Z"}'
 
     Error429:
         type: string
         description: 'Error: Too many requests'
-        example: '{status_code: "400",message: To many request at users service!",path: "/v1/users/addresses/930445e1-339f-40a4-a91a-50608aedca90/1",method: "DELETE",timestamp: "2021-08-23T19:46:29.852Z"}'
+        example: '{status_code: "429",message: Too many requests at X path,path: "/v1/users/X/Y",method: "Z",timestamp: "9999-99-99T99:99:99.999Z"}'
     
     Error500:
         type: string
         description: 'Error: Too many requests'
-        example: '{status_code: "500",message: Unexpected server error",path: "/v1/users/addresses/930445e1-339f-40a4-a91a-50608aedca90/1",method: "DELETE",timestamp: "2021-08-23T19:46:29.852Z"}'
+        example: '{status_code: "500",message: Unexpected server error",path: "/v1/users/X/Y",method: "Z",timestamp: "9999-99-99T99:99:99.999Z"}'
