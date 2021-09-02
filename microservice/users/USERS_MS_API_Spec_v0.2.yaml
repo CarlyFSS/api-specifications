@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.0.3
 
 info:
   title: Users API
@@ -14,6 +14,8 @@ paths:
     # Roles routes
     /roles:
         get:
+            security:
+                - JWTAuth: []
             summary: Lists all roles
             description: List all avaiable roles
             operationId: ListAllRolesService
@@ -40,6 +42,8 @@ paths:
 
     /roles/{role_id}:
         get:
+            security:
+                - JWTAuth: []
             summary: Lists an role
             description: List a role by ID
             operationId: ListRoleService
@@ -105,6 +109,8 @@ paths:
     
     /users/{user_id}:
         get:
+            security:
+                - JWTAuth: []
             summary: Lists an user
             description: List description
             operationId: ListUserService
@@ -137,6 +143,8 @@ paths:
                     $ref: '#/components/responses/ErrorDefault'
 
         patch:
+            security:
+                - JWTAuth: []
             summary: Updates an user
             description: Patch description
             operationId: UpdateUserService
@@ -176,6 +184,8 @@ paths:
                     $ref: '#/components/responses/ErrorDefault'
 
         delete:
+            security:
+                - JWTAuth: []
             summary: Deletes an user
             description: Delete description
             operationId: DeleteUserService
@@ -246,7 +256,7 @@ paths:
     /users/addresses/{user_id}:
         get:
             security:
-                - OAuth: [client, sysadmin]
+                - JWTAuth: []
             summary: Lists all or one user addresses
             description: If the parameter 'address_id' is equal to *null* if fetches all addresses
             operationId: ListAddressesService
@@ -278,7 +288,7 @@ paths:
 
         post:
             security:
-                - OAuth: [client, sysadmin]
+                - JWTAuth: []
             summary: Create a user address
             description: Creates a new user address
             operationId: CreateAddressService
@@ -289,7 +299,7 @@ paths:
                 -   $ref: '#/components/parameters/UserID'
 
             requestBody:
-                $ref: '#/components/requestBodies/UserID'
+                $ref: '#/components/requestBodies/CreateAddress'
                     
             responses:
                 '201':
@@ -309,7 +319,7 @@ paths:
 
         patch:
             security:
-                - OAuth: [client, sysadmin]
+                - JWTAuth: []
             summary: Updates a user address
             description: Updates an existing user address
             operationId: UpdateAddressService
@@ -345,7 +355,7 @@ paths:
     
         delete:
             security:
-                - OAuth: [client, sysadmin]
+                - JWTAuth: []
             summary: Deletes a user address
             description: Deletes an existing user address
             operationId: DeleteAddressService
@@ -375,6 +385,8 @@ paths:
     # Phones routes
     /users/phones/{user_id}:
         post:
+            security:
+                - JWTAuth: []
             summary: Create a user phone
             description: Creates a new user phone
             operationId: CreatePhoneService
@@ -408,6 +420,8 @@ paths:
                     $ref: '#/components/responses/ErrorDefault'
 
         get:
+            security:
+                - JWTAuth: []
             summary: List a user phone
             description: Lists an existing user phone
             operationId: ListPhoneService
@@ -435,6 +449,8 @@ paths:
                     $ref: '#/components/responses/ErrorDefault'
 
         patch:
+            security:
+                - JWTAuth: []
             summary: Updates a user phone
             description: Updates an existing user phone
             operationId: UpdatePhoneService
@@ -469,6 +485,8 @@ paths:
                     $ref: '#/components/responses/ErrorDefault'
 
         delete:
+            security:
+                - JWTAuth: []
             summary: Deletes a user phone
             description: Deletes an existing user phone
             operationId: DeletePhoneService
@@ -505,9 +523,7 @@ components:
                 application/json:
                     schema:
                         $ref: '#/components/schemas/CreateAddressDTO'
-                    encoding:
-                        role:
-                            contentType: string
+                
 
 
     securitySchemes:
@@ -515,7 +531,7 @@ components:
             type: http
             scheme: bearer
             bearerFormat: JWT
-
+            description: JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object
         OAuth:
             type: oauth2
             flows:
