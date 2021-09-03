@@ -10,7 +10,7 @@ servers:
         description: API Server
 
 security:
-    - JWTAuth: []
+    - BasicAuth: []
 
 # Add Healthz route
 # Add v1 to all routes
@@ -528,7 +528,7 @@ components:
 
 
     securitySchemes:
-        basic:
+        BasicAuth:
             type: http
             scheme: basic
         JWTAuth:
@@ -542,53 +542,73 @@ components:
 
         # Roles schemas
         Role:
+            additionalProperties: false
             type: object
             properties:
                 id:
                     type: string
                     description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
                     pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    maxLength: 36
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
                 name:
                     type: string
+                    pattern: ^(CLIENT|EMPLOYEE|ADMIN|SYSADMIN)$
+                    maxLength: 10
                     example: 'Role name'
 
         # Users schemas
         User:
+            additionalProperties: false
             type: object
             properties:
                 id:
                     type: string
                     description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
                     pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    maxLength: 36
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
                 role_id:
                     type: string
-                    example: 'Role UUID' 
+                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    maxLength: 36
+                    example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
                 name:
                     type: string
-                    example: 'Your name'
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 100
+                    example: 'John'
                 email:
                     type: string
+                    pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
                     description: Must be an valid email
-                    example: 'email@email.com'
+                    maxLength: 50
+                    example: 'john@email.com'
                 password:
                     description: Will be encrypted before being stored in DB
+                    pattern: ^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*(){}\-__+.]){1,}).{6,250}$
+                    maxLength: 250
                     type: string
-                    example: 'Your password'
+                    example: '*T!.7_QqJw{HJvNMRGQe'
                 sex:
                     type: string
-                    example: 'Your name'
+                    pattern: ^(male|female)$
+                    maxLength: 6
+                    example: 'male'
                 birthdate:
                     type: string
-                    description: Must be in the format DD/MM/YYYY if not it will generate an error
+                    pattern: ^([1-9]{2}\/[1-9]{2}\/[1-9]{4})$
+                    maxLength: 10
                     example: 'DD/MM/YYYY'
                 document_number:
                     type: string
-                    description: Must be an valid 
-                    example: '999.999.999-99'
+                    pattern: ^([1-9]{11})$
+                    maxLength: 11
+                    example: '99999999999'
 
         CreateUserDTO:
+            additionalProperties: false
             type: object
             required:
                 - name
@@ -601,29 +621,43 @@ components:
                     type: string
                     description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
                     pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    maxLength: 36
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
                 name:
                     type: string
-                    example: 'Your name'
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 100
+                    example: 'John'
                 email:
                     type: string
-                    description: Must be an valid email like email@email.com
-                    example: 'email@email.com'
+                    pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+                    description: Must be an valid email
+                    maxLength: 50
+                    example: 'john@email.com'
                 password:
                     description: Will be encrypted before being stored in DB
+                    pattern: ^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*(){}\-__+.]){1,}).{6,250}$
+                    maxLength: 250
                     type: string
-                    example: 'Your password'
+                    example: '*T!.7_QqJw{HJvNMRGQe'
                 sex:
                     type: string
-                    example: 'Your name'
+                    pattern: ^(male|female)$
+                    maxLength: 6
+                    example: 'male'
                 birthdate:
                     type: string
+                    pattern: ^([1-9]{2}\/[1-9]{2}\/[1-9]{4})$
+                    maxLength: 10
                     example: 'DD/MM/YYYY'
                 document_number:
                     type: string
-                    example: '999.999.999-99'
+                    pattern: ^([1-9]{11})$
+                    maxLength: 11
+                    example: '99999999999'
 
         UpdateUserDTO:
+            additionalProperties: false
             type: object
             properties:
                 name:
@@ -635,6 +669,7 @@ components:
                     type: string
                     pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
                     description: Must be an valid email
+                    maxLength: 50
                     example: 'john@email.com'
                 password:
                     description: Will be encrypted before being stored in DB
@@ -645,17 +680,20 @@ components:
 
         # Addresses schemas
         Address:
+            additionalProperties: false
             type: object
             properties:
                 id:
                     type: string
                     description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
                     pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    maxLength: 36
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
                 user_id:
                     type: string
                     description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
                     pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    maxLength: 36
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
                 country:
                     type: string
@@ -708,6 +746,7 @@ components:
                     example: 'Home'
 
         CreateAddressDTO:
+            additionalProperties: false
             type: object
             required:
                 - country
@@ -769,6 +808,7 @@ components:
                     example: 'Home'
 
         UpdateAddressDTO:
+            additionalProperties: false
             type: object
             properties:
                 country:
@@ -823,17 +863,20 @@ components:
 
         # Phones schemas
         Phone:
+            additionalProperties: false
             type: object
             properties:
                 id:
                     type: string
                     description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
                     pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    maxLength: 36
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
                 user_id:
                     type: string
                     description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
                     pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    maxLength: 36
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
                 country_code:
                     type: string
@@ -856,6 +899,7 @@ components:
                     type: boolean
 
         CreatePhoneDTO:
+            additionalProperties: false
             type: object
             required:
                 - country-code
@@ -879,6 +923,7 @@ components:
                     example: '999999999'
 
         UpdatePhoneDTO:
+            additionalProperties: false
             type: object
             properties:
                 country_code:
