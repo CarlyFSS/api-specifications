@@ -523,7 +523,6 @@ components:
                 application/json:
                     schema:
                         $ref: '#/components/schemas/UpdatePhoneDTO'
-                
 
 
     securitySchemes:
@@ -1033,6 +1032,8 @@ components:
                 minimum: 1
                 maximum: 32000
                 example: 5
+    
+    
     responses:
 
         # Errors
