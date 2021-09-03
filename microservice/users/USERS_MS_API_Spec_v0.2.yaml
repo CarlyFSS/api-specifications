@@ -571,7 +571,7 @@ components:
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
                 name:
                     type: string
-                    pattern: ^(CLIENT|EMPLOYEE|ADMIN|SYSADMIN)$
+                    pattern: ^(CLIENT|EMPLOYEE|MANAGER|ADMIN|SYSADMIN)$
                     maxLength: 10
                     example: 'CLIENT'
 
@@ -1099,6 +1099,7 @@ components:
   
         # Errors
         Error400:
+            
             description: 'Bad Request Exception'
             content:
                 application/json:
