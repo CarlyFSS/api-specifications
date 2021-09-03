@@ -39,7 +39,7 @@ paths:
             security:
                 - JWTAuth: []
             summary: Lists all roles
-            description: List all avaiable roles
+            description: List all avaiable roles. Roles are (CLIENT | EMPLOYEE | MANAGER | ADMIN | SYSADMIN)
             operationId: ListAllRolesService
             tags:
                 - Roles
