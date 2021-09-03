@@ -5,6 +5,13 @@ info:
   description: Simple User API
   version: '0.1'
 
+servers:
+    -   url: 'https://api.fireheet.com/v1/users'
+        description: API Server
+
+security:
+    - JWTAuth: []
+
 # Add Healthz route
 # Add v1 to all routes
 # Add errors responses
@@ -521,6 +528,9 @@ components:
 
 
     securitySchemes:
+        basic:
+            type: http
+            scheme: basic
         JWTAuth:
             type: http
             scheme: bearer
