@@ -9,14 +9,32 @@ servers:
     -   url: 'https://api.fireheet.com/v1/users'
         description: API Server
 
-# Add Healthz route
-# Add v1 to all routes
-# Add errors responses
-# Think about security with roles
+
 paths:
+    
+    # Health routes
+    /v1/healthz:
+        get:
+            summary: Check API health
+            description: A checkmark to see if the service is avaiable
+            operationId: HealthCheck
+            tags:
+                - Health
+                    
+            responses:
+                '200':
+                    $ref: '#/components/responses/Healthz'
+                '400':
+                    $ref: '#/components/responses/Error400'
+                '404':
+                    $ref: '#/components/responses/Error404'
+                '429':
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
 
     # Roles routes
-    /roles:
+    /v1/roles:
         get:
             security:
                 - JWTAuth: []
@@ -49,7 +67,7 @@ paths:
                 'default':
                     $ref: '#/components/responses/ErrorDefault'
 
-    /roles/{role_id}:
+    /v1/roles/{role_id}:
         get:
             security:
                 - JWTAuth: []
@@ -79,7 +97,7 @@ paths:
                     $ref: '#/components/responses/ErrorDefault'
 
     # Users routes
-    /users:
+    /v1:
         post:
             summary: Creates an user
             description: Post description
@@ -106,7 +124,7 @@ paths:
                 'default':
                     $ref: '#/components/responses/ErrorDefault'
     
-    /users/{user_id}:
+    /v1/{user_id}:
         get:
             security:
                 - JWTAuth: []
@@ -194,7 +212,7 @@ paths:
                 'default':
                     $ref: '#/components/responses/ErrorDefault'
 
-    /users/{user_id}/activate:
+    /v1/{user_id}/activate:
         get:
             security:
                 - JWTAuth: []
@@ -224,7 +242,7 @@ paths:
                     $ref: '#/components/responses/ErrorDefault'
 
     # Addresses routes
-    /users/addresses/{user_id}:
+    /v1/addresses/{user_id}:
         get:
             security:
                 - JWTAuth: []
@@ -352,7 +370,7 @@ paths:
                     $ref: '#/components/responses/ErrorDefault'
   
     # Phones routes
-    /users/phones/{user_id}:
+    /v1/phones/{user_id}:
         post:
             security:
                 - JWTAuth: []
@@ -1026,6 +1044,59 @@ components:
     
     responses:
 
+        Healthz:
+            description: Success
+            content:
+                application/json:
+                    schema:
+                        type: object
+                        properties:
+                            status:
+                                type: string
+                                pattern: ^(ok)$
+                                maxLength: 2
+                                example: 'ok'
+                            info:
+                                type: object
+                                properties:
+                                    Database:
+                                        type: object
+                                        properties:
+                                            status:
+                                                type: string
+                                                pattern: ^(up|down)$
+                                                maxLength: 4
+                                                example: 'up'
+                                    Cache:
+                                        type: object
+                                        properties:
+                                            status:
+                                                type: string
+                                                pattern: ^(up|down)$
+                                                maxLength: 4
+                                                example: 'down'
+                            error:
+                                type: object
+                            details:
+                                type: object
+                                properties:
+                                    Database:
+                                        type: object
+                                        properties:
+                                            status:
+                                                type: string
+                                                pattern: ^(up|down)$
+                                                maxLength: 4
+                                                example: 'up'
+                                    Cache:
+                                        type: object
+                                        properties:
+                                            status:
+                                                type: string
+                                                pattern: ^(up|down)$
+                                                maxLength: 4
+                                                example: 'down'
+  
         # Errors
         Error400:
             description: 'Bad Request Exception'
