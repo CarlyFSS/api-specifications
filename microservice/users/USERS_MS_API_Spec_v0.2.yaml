@@ -469,22 +469,24 @@ components:
         # User request bodies
         CreateUser:
             description: Create user infos
-                content:
-                    'application/json':
-                        schema:
-                            $ref: '#/components/schemas/CreateUserDTO'
+            required: true
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/CreateUserDTO'
 
         UpdateUser:
             description: Updates user infos
-                content:
-                    'application/json':
-                        schema:
-                            $ref: '#/components/schemas/UpdateUserDTO'
+            required: true
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/UpdateUserDTO'
 
         # Address request bodies
         CreateAddress:
-            required: true
             description: Create address request body
+            required: true
             content:
                 application/json:
                     schema:
@@ -492,26 +494,29 @@ components:
         
         UpdateAddress:
             description: Update address infos
-                content:
-                    'application/json':
-                        schema:
-                            $ref: '#/components/schemas/UpdateAddressDTO'
+            required: true
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/UpdateAddressDTO'
         
 
         # Phone request bodies
         CreatePhone:
             description: Create phone infos
-                content:
-                    'application/json':
-                        schema:
-                            $ref: '#/components/schemas/CreatePhoneDTO'
+            required: true
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/CreatePhoneDTO'
 
         UpdatePhone:
             description: Update phone infos
-                content:
-                    'application/json':
-                        schema:
-                            $ref: '#/components/schemas/UpdatePhoneDTO'
+            required: true
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/UpdatePhoneDTO'
                 
 
 
