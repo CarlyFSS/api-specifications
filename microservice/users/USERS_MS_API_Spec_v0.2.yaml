@@ -118,13 +118,7 @@ paths:
                 - Users
             
             parameters: 
-                -   name: user_id
-                    description: 'User UUID'
-                    required: true
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
-                    schema:
-                        type: string
+                -   $ref: '#/components/parameters/UserID'
                 
             responses:
                 '200':
@@ -152,13 +146,7 @@ paths:
                 - Users
             
             parameters: 
-                -   name: user_id
-                    description: 'User UUID'
-                    required: true
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
-                    schema:
-                        type: string
+                -   $ref: '#/components/parameters/UserID'
             
             requestBody:
                 description: Updates user infos
@@ -193,13 +181,7 @@ paths:
                 - Users
             
             parameters: 
-                -   name: user_id
-                    description: 'User UUID'
-                    required: true
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
-                    schema:
-                        type: string
+                -   $ref: '#/components/parameters/UserID'
                 
             responses:
                 '200':
@@ -228,14 +210,8 @@ paths:
                 - Users
             
             parameters: 
-                -   name: user_id
-                    description: 'User UUID'
-                    required: true
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
-                    schema:
-                        type: string
-                
+                -   $ref: '#/components/parameters/UserID'
+
             responses:
                 '200':
                     description: Success
@@ -462,11 +438,7 @@ paths:
                 -   $ref: '#/components/parameters/PhoneID'
 
             requestBody:
-                description: Update phone infos
-                content:
-                    'application/json':
-                        schema:
-                            $ref: '#/components/schemas/UpdatePhoneDTO'
+                $ref: '#/components/requestBodies/UpdatePhone'
                     
             responses:
                 '200':
@@ -523,6 +495,17 @@ components:
                 application/json:
                     schema:
                         $ref: '#/components/schemas/CreateAddressDTO'
+        
+
+        # Phone request bodies
+        CreatePhone:
+
+        UpdatePhone:
+            description: Update phone infos
+                content:
+                    'application/json':
+                        schema:
+                            $ref: '#/components/schemas/UpdatePhoneDTO'
                 
 
 
@@ -532,17 +515,6 @@ components:
             scheme: bearer
             bearerFormat: JWT
             description: JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object
-        OAuth:
-            type: oauth2
-            flows:
-                authorizationCode:
-                    tokenUrl: 'http://example.com/oauth/token'
-                    authorizationUrl: 'http://example.com/oauth'
-                    scopes:
-                        client: The owner client of the data it is changing
-                        employee: The employee can make avaiable actions in its store
-                        admin: The admin of the store, can make any action in its store
-                        sysadmin: System Owner
 
     
     schemas:
