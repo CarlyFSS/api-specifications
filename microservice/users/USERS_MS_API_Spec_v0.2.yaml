@@ -25,6 +25,10 @@ paths:
             operationId: ListAllRolesService
             tags:
                 - Roles
+
+            parameters:
+                - $ref: '#/components/parameters/PaginationLimit'
+                - $ref: '#/components/parameters/PaginationOffset'
                     
             responses:
                 '200':
@@ -33,6 +37,7 @@ paths:
                         application/json:
                             schema:
                                 type: array
+                                maxItems: 100
                                 items:
                                     $ref: '#/components/schemas/Role'
                 '400':
@@ -579,7 +584,7 @@ components:
                     example: 'John'
                 email:
                     type: string
-                    pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+                    pattern: ^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$
                     description: Must be an valid email
                     maxLength: 50
                     example: 'email@email.com'
@@ -628,7 +633,7 @@ components:
                     example: 'John'
                 email:
                     type: string
-                    pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+                    pattern: ^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$
                     description: Must be an valid email
                     maxLength: 50
                     example: 'email@email.com'
@@ -665,7 +670,7 @@ components:
                     example: 'John'
                 email:
                     type: string
-                    pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+                    pattern: ^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$
                     description: Must be an valid email
                     maxLength: 50
                     example: 'email@email.com'
@@ -1053,12 +1058,12 @@ components:
                                 example: 400
                             message:
                                 type: string
-                                pattern: none
+                                pattern: ^([a-zA-Z'"!\/\.\-].{1,})$
                                 maxLength: 250
                                 example: 'ID "X" is not a valid UUID!'
                             path:
                                 type: string
-                                pattern: none
+                                pattern: ^(\/v[1-9]\/users\/[a-z]{1,20}\/[a-zA-Z1-9]{1,})$
                                 maxLength: 250
                                 example: '/v1/users/X/Y'
                             method:
@@ -1088,12 +1093,12 @@ components:
                                 example: 404
                             message:
                                 type: string
-                                pattern: none
+                                pattern: ^([a-zA-Z'"!\/\.\-].{1,})$
                                 maxLength: 250
                                 example: 'User ID "X" does not exist!'
                             path:
                                 type: string
-                                pattern: none
+                                pattern: ^(\/v[1-9]\/users\/[a-z]{1,20}\/[a-zA-Z1-9]{1,})$
                                 maxLength: 250
                                 example: '/v1/users/X/Y'
                             method:
@@ -1123,12 +1128,12 @@ components:
                                 example: 429
                             message:
                                 type: string
-                                pattern: none
+                                pattern: ^([a-zA-Z'"!\/\.\-].{1,})$
                                 maxLength: 250
                                 example: 'Too many requests at path X'
                             path:
                                 type: string
-                                pattern: none
+                                pattern: ^(\/v[1-9]\/users\/[a-z]{1,20}\/[a-zA-Z1-9]{1,})$
                                 maxLength: 250
                                 example: '/v1/users/X/Y'
                             method:
@@ -1158,12 +1163,12 @@ components:
                                 example: 500
                             message:
                                 type: string
-                                pattern: none
+                                pattern: ^([a-zA-Z'"!\/\.\-].{1,})$
                                 maxLength: 250
                                 example: 'Internal Server Error'
                             path:
                                 type: string
-                                pattern: none
+                                pattern: ^(\/v[1-9]\/users\/[a-z]{1,20}\/[a-zA-Z1-9]{1,})$
                                 maxLength: 250
                                 example: '/v1/users/X/Y'
                             method:
