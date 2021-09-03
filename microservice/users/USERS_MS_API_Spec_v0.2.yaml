@@ -9,9 +9,6 @@ servers:
     -   url: 'https://api.fireheet.com/v1/users'
         description: API Server
 
-security:
-    - BasicAuth: []
-
 # Add Healthz route
 # Add v1 to all routes
 # Add errors responses
@@ -235,8 +232,9 @@ paths:
             parameters: 
                 -   $ref: '#/components/parameters/UserID'
                 -   $ref: '#/components/parameters/AddressID'
-                    
-                    
+                -   $ref: '#/components/parameters/PaginationLimit'
+                -   $ref: '#/components/parameters/PaginationOffset'
+
             responses:
                 '200':
                     description: Success
@@ -244,6 +242,7 @@ paths:
                         application/json:
                             schema:
                                 type: array
+                                maxItems: 100
                                 items:
                                     $ref: '#/components/schemas/Address'
                 '400':
@@ -555,7 +554,7 @@ components:
                     type: string
                     pattern: ^(CLIENT|EMPLOYEE|ADMIN|SYSADMIN)$
                     maxLength: 10
-                    example: 'Role name'
+                    example: 'CLIENT'
 
         # Users schemas
         User:
@@ -584,9 +583,9 @@ components:
                     pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
                     description: Must be an valid email
                     maxLength: 50
-                    example: 'john@email.com'
+                    example: 'email@email.com'
                 password:
-                    description: Will be encrypted before being stored in DB
+                    description: 'Must have at least: 6 characters, 1 Uppercase letter, 1 number and 1 of the following symbols "!@#$%^&*(){}\-__+.)"'
                     pattern: ^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*(){}\-__+.]){1,}).{6,250}$
                     maxLength: 250
                     type: string
@@ -600,7 +599,7 @@ components:
                     type: string
                     pattern: ^([1-9]{2}\/[1-9]{2}\/[1-9]{4})$
                     maxLength: 10
-                    example: 'DD/MM/YYYY'
+                    example: '01/02/1234'
                 document_number:
                     type: string
                     pattern: ^([1-9]{11})$
@@ -633,9 +632,9 @@ components:
                     pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
                     description: Must be an valid email
                     maxLength: 50
-                    example: 'john@email.com'
+                    example: 'email@email.com'
                 password:
-                    description: Will be encrypted before being stored in DB
+                    description: 'Must have at least: 6 characters, 1 Uppercase letter, 1 number and 1 of the following symbols "!@#$%^&*(){}\-__+.)"'
                     pattern: ^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*(){}\-__+.]){1,}).{6,250}$
                     maxLength: 250
                     type: string
@@ -649,7 +648,7 @@ components:
                     type: string
                     pattern: ^([1-9]{2}\/[1-9]{2}\/[1-9]{4})$
                     maxLength: 10
-                    example: 'DD/MM/YYYY'
+                    example: '01/02/1234'
                 document_number:
                     type: string
                     pattern: ^([1-9]{11})$
@@ -670,9 +669,9 @@ components:
                     pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
                     description: Must be an valid email
                     maxLength: 50
-                    example: 'john@email.com'
+                    example: 'email@email.com'
                 password:
-                    description: Will be encrypted before being stored in DB
+                    description: 'Must have at least: 6 characters, 1 Uppercase letter, 1 number and 1 of the following symbols "!@#$%^&*(){}\-__+.)"'
                     pattern: ^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*(){}\-__+.]){1,}).{6,250}$
                     maxLength: 250
                     type: string
@@ -902,7 +901,7 @@ components:
             additionalProperties: false
             type: object
             required:
-                - country-code
+                - country_code
                 - prefix
                 - number
             properties:
@@ -952,8 +951,10 @@ components:
             required: true
             in: path 
             schema:
+                additionalProperties: false
                 type: string
                 pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                maxLength: 36
                 example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
         
         # Roles parameters
@@ -963,8 +964,10 @@ components:
             required: true
             in: path 
             schema:
+                additionalProperties: false
                 type: string                
                 pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                maxLength: 36
                 example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
         
         # Address parameters
@@ -974,8 +977,10 @@ components:
             required: true
             in: query 
             schema:
+                additionalProperties: false
                 type: string
                 pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                maxLength: 36
                 example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
         
         AddressID:
@@ -984,8 +989,10 @@ components:
             required: false
             in: query 
             schema:
+                additionalProperties: false
                 type: string
                 pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                maxLength: 36
                 example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
 
         # Phones parameters
@@ -995,13 +1002,38 @@ components:
             required: true
             in: query 
             schema:
+                additionalProperties: false
                 type: string
                 pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                maxLength: 36
                 example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
     
-    
-    responses:
+        PaginationLimit:
+            name: limit
+            description: How many rows to return
+            required: false
+            in: query 
+            schema:
+                additionalProperties: false
+                type: integer
+                format: int32
+                minimum: 1
+                maximum: 100
+                example: 5
 
+        PaginationOffset:
+            name: offset
+            description: From which row to return
+            required: false
+            in: query 
+            schema:
+                additionalProperties: false
+                type: integer
+                format: int32
+                minimum: 1
+                maximum: 32000
+                example: 5
+    responses:
 
         # Errors
         Error400:
@@ -1009,23 +1041,34 @@ components:
             content:
                 application/json:
                     schema:
+                        additionalProperties: false
                         type: object
                         properties:
                             status_code:
                                 type: integer
                                 format: int32
+                                minimum: 400
+                                maximum: 400
                                 example: 400
                             message:
                                 type: string
-                                example: 'ID "X" is not a valid UUID!"'
+                                pattern: none
+                                maxLength: 250
+                                example: 'ID "X" is not a valid UUID!'
                             path:
                                 type: string
+                                pattern: none
+                                maxLength: 250
                                 example: '/v1/users/X/Y'
                             method:
                                 type: string
+                                pattern: ^(POST|GET|PATCH|PUT|DELETE|HEAD)$
+                                maxLength: 6
                                 example: 'POST'
                             timestamp:
                                 type: string
+                                pattern: ^([1-9]{4}\-[1-9]{2}\-[1-9]{2}T[1-9]{2}:[1-9]{2}:[1-9]{2}\.[1-9]{3}Z)$
+                                maxLength: 24
                                 example: '9999-99-99T99:99:99.999Z'
         
         Error404:
@@ -1033,23 +1076,34 @@ components:
             content:
                 application/json:
                     schema:
+                        additionalProperties: false
                         type: object
                         properties:
                             status_code:
                                 type: integer
                                 format: int32
+                                minimum: 404
+                                maximum: 404
                                 example: 404
                             message:
                                 type: string
-                                example: 'Entity X with ID "Y" does not exists!'
+                                pattern: none
+                                maxLength: 250
+                                example: 'User ID "X" does not exist!'
                             path:
                                 type: string
+                                pattern: none
+                                maxLength: 250
                                 example: '/v1/users/X/Y'
                             method:
                                 type: string
+                                pattern: ^(POST|GET|PATCH|PUT|DELETE|HEAD)$
+                                maxLength: 6
                                 example: 'POST'
                             timestamp:
                                 type: string
+                                pattern: ^([1-9]{4}\-[1-9]{2}\-[1-9]{2}T[1-9]{2}:[1-9]{2}:[1-9]{2}\.[1-9]{3}Z)$
+                                maxLength: 24
                                 example: '9999-99-99T99:99:99.999Z'
 
         Error429:
@@ -1057,23 +1111,34 @@ components:
             content:
                 application/json:
                     schema:
+                        additionalProperties: false
                         type: object
                         properties:
                             status_code:
                                 type: integer
                                 format: int32
+                                minimum: 429
+                                maximum: 429
                                 example: 429
                             message:
                                 type: string
-                                example: 'Too many requests at X path'
+                                pattern: none
+                                maxLength: 250
+                                example: 'Too many requests at path X'
                             path:
                                 type: string
+                                pattern: none
+                                maxLength: 250
                                 example: '/v1/users/X/Y'
                             method:
                                 type: string
+                                pattern: ^(POST|GET|PATCH|PUT|DELETE|HEAD)$
+                                maxLength: 6
                                 example: 'POST'
                             timestamp:
                                 type: string
+                                pattern: ^([1-9]{4}\-[1-9]{2}\-[1-9]{2}T[1-9]{2}:[1-9]{2}:[1-9]{2}\.[1-9]{3}Z)$
+                                maxLength: 24
                                 example: '9999-99-99T99:99:99.999Z'
         
         ErrorDefault:
@@ -1081,23 +1146,34 @@ components:
             content:
                 application/json:
                     schema:
+                        additionalProperties: false
                         type: object
                         properties:
                             status_code:
                                 type: integer
                                 format: int32
+                                minimum: 500
+                                maximum: 500
                                 example: 500
                             message:
                                 type: string
+                                pattern: none
+                                maxLength: 250
                                 example: 'Internal Server Error'
                             path:
                                 type: string
+                                pattern: none
+                                maxLength: 250
                                 example: '/v1/users/X/Y'
                             method:
                                 type: string
+                                pattern: ^(POST|GET|PATCH|PUT|DELETE|HEAD)$
+                                maxLength: 6
                                 example: 'POST'
                             timestamp:
                                 type: string
+                                pattern: ^([1-9]{4}\-[1-9]{2}\-[1-9]{2}T[1-9]{2}:[1-9]{2}:[1-9]{2}\.[1-9]{3}Z)$
+                                maxLength: 24
                                 example: '9999-99-99T99:99:99.999Z'
 
 
