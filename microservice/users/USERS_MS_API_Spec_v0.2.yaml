@@ -717,7 +717,6 @@ components:
                     format: int32
                     minimum: 0
                     maximum: 32000
-                    description: Must be a number between 0 and 32000
                     example: 536
                 district:
                     type: string
@@ -779,7 +778,6 @@ components:
                     format: int32
                     minimum: 0
                     maximum: 32000
-                    description: Must be a number between 0 and 32000
                     example: 536
                 district:
                     type: string
@@ -833,7 +831,6 @@ components:
                     format: int32
                     minimum: 0
                     maximum: 32000
-                    description: Must be a number between 0 and 32000
                     example: 536
                 district:
                     type: string
@@ -891,7 +888,7 @@ components:
                     maxLength: 10
                     example: '999999999'
                 verified:
-                    description: Controls if the user has verified or not the phone number.
+                    description: Controls if the phone number has been verified or not
                     example: true
                     type: boolean
 
