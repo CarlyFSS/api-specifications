@@ -51,13 +51,7 @@ paths:
                 - Roles
 
             parameters: 
-                -   name: role_id
-                    description: 'Role UUID'
-                    required: true
-                    example: 'b8596407-ad0d-4bd2-83ae-0d122c128a3a'
-                    in: path 
-                    schema:
-                        type: string
+                -   $ref: '#/components/parameters/RoleID'
                     
             responses:
                 '200':
@@ -85,11 +79,7 @@ paths:
                 - Users
             
             requestBody:
-                description: Create user infos
-                content:
-                    'application/json':
-                        schema:
-                            $ref: '#/components/schemas/CreateUserDTO'
+                $ref: '#/components/requestBodies/CreateUser'
                     
             responses:
                 '201':
@@ -149,11 +139,7 @@ paths:
                 -   $ref: '#/components/parameters/UserID'
             
             requestBody:
-                description: Updates user infos
-                content:
-                    'application/json':
-                        schema:
-                            $ref: '#/components/schemas/UpdateUserDTO'
+                $ref: '#/components/requestBodies/UpdateUser'
                 
             responses:
                 '200':
@@ -307,11 +293,7 @@ paths:
                 -   $ref: '#/components/parameters/AddressIDRequired'
 
             requestBody:
-                description: Update address infos
-                content:
-                    'application/json':
-                        schema:
-                            $ref: '#/components/schemas/UpdateAddressDTO'
+                $ref: '#/components/requestBodies/UpdateAddress'
                     
             responses:
                 '200':
@@ -373,11 +355,7 @@ paths:
                 - $ref: '#/components/parameters/UserID'
 
             requestBody:
-                description: Create phone infos
-                content:
-                    'application/json':
-                        schema:
-                            $ref: '#/components/schemas/CreatePhoneDTO'
+                $ref: '#/components/requestBodies/CreatePhone'
                     
             responses:
                 '201':
@@ -488,6 +466,22 @@ paths:
 
 components:
     requestBodies:
+        # User request bodies
+        CreateUser:
+            description: Create user infos
+                content:
+                    'application/json':
+                        schema:
+                            $ref: '#/components/schemas/CreateUserDTO'
+
+        UpdateUser:
+            description: Updates user infos
+                content:
+                    'application/json':
+                        schema:
+                            $ref: '#/components/schemas/UpdateUserDTO'
+
+        # Address request bodies
         CreateAddress:
             required: true
             description: Create address request body
@@ -496,9 +490,21 @@ components:
                     schema:
                         $ref: '#/components/schemas/CreateAddressDTO'
         
+        UpdateAddress:
+            description: Update address infos
+                content:
+                    'application/json':
+                        schema:
+                            $ref: '#/components/schemas/UpdateAddressDTO'
+        
 
         # Phone request bodies
         CreatePhone:
+            description: Create phone infos
+                content:
+                    'application/json':
+                        schema:
+                            $ref: '#/components/schemas/CreatePhoneDTO'
 
         UpdatePhone:
             description: Update phone infos
