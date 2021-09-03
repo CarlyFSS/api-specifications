@@ -531,9 +531,6 @@ components:
 
 
     securitySchemes:
-        BasicAuth:
-            type: http
-            scheme: basic
         JWTAuth:
             type: http
             scheme: bearer
@@ -955,7 +952,6 @@ components:
             required: true
             in: path 
             schema:
-                additionalProperties: false
                 type: string
                 pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                 maxLength: 36
@@ -968,7 +964,6 @@ components:
             required: true
             in: path 
             schema:
-                additionalProperties: false
                 type: string                
                 pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                 maxLength: 36
@@ -981,7 +976,6 @@ components:
             required: true
             in: query 
             schema:
-                additionalProperties: false
                 type: string
                 pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                 maxLength: 36
@@ -993,7 +987,6 @@ components:
             required: false
             in: query 
             schema:
-                additionalProperties: false
                 type: string
                 pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                 maxLength: 36
@@ -1006,19 +999,18 @@ components:
             required: true
             in: query 
             schema:
-                additionalProperties: false
                 type: string
                 pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                 maxLength: 36
                 example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
     
+        # Other parameters
         PaginationLimit:
             name: limit
-            description: How many rows to return
+            description: 'How many rows to return (Default: 10)'
             required: false
             in: query 
             schema:
-                additionalProperties: false
                 type: integer
                 format: int32
                 minimum: 1
@@ -1027,11 +1019,10 @@ components:
 
         PaginationOffset:
             name: offset
-            description: From which row to return
+            description: 'From which row to return (Default: 1)'
             required: false
             in: query 
             schema:
-                additionalProperties: false
                 type: integer
                 format: int32
                 minimum: 1
