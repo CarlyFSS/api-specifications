@@ -789,6 +789,7 @@ components:
                     example: 'South District'
                 complement:
                     type: string
+                    nullable: true
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                     maxLength: 30
                     example: 'Next to a red store'
@@ -800,6 +801,7 @@ components:
                     example: '99999999'
                 description:
                     type: string
+                    nullable: true
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                     maxLength: 25
                     description: If it is null, the system will generate a name like 'Others' can be changed after to any name you like
@@ -818,6 +820,7 @@ components:
                     example: '1999-12-31T02:00:00.000Z'
                 delete_at:
                     type: string
+                    nullable: true
                     description: When the entity was deleted
                     pattern: ^([0-9]{4}\-[0-9]{2}\-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z){1}$
                     maxLength: 24
