@@ -3,7 +3,7 @@ openapi: 3.0.3
 info:
   title: Users API
   description: Simple User API
-  version: '0.2'
+  version: '0.3'
 
 servers:
     -   url: 'https://api.fireheet.com/v1/users'
