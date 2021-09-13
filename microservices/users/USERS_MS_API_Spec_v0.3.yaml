@@ -254,7 +254,7 @@ paths:
             
             parameters: 
                 -   $ref: '#/components/parameters/UserID'
-                -   $ref: '#/components/parameters/AddressID'
+                -   $ref: '#/components/parameters/OptionalAddressID'
                 -   $ref: '#/components/parameters/PaginationLimit'
                 -   $ref: '#/components/parameters/PaginationOffset'
 
@@ -319,7 +319,7 @@ paths:
             
             parameters: 
                 -   $ref: '#/components/parameters/UserID'
-                -   $ref: '#/components/parameters/AddressIDRequired'
+                -   $ref: '#/components/parameters/AddressID'
 
             requestBody:
                 $ref: '#/components/requestBodies/UpdateAddress'
@@ -351,7 +351,7 @@ paths:
             
             parameters: 
                 -   $ref: '#/components/parameters/UserID'
-                -   $ref: '#/components/parameters/AddressIDRequired'
+                -   $ref: '#/components/parameters/AddressID'
             
             responses:
                 '200':
