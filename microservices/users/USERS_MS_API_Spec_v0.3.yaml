@@ -567,7 +567,7 @@ components:
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
                 name:
                     type: string
-                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$
                     maxLength: 100
                     example: 'John'
                 email:
@@ -635,7 +635,7 @@ components:
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
                 name:
                     type: string
-                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$
                     maxLength: 100
                     example: 'John'
                 email:
@@ -666,7 +666,7 @@ components:
             properties:
                 name:
                     type: string
-                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$
                     maxLength: 100
                     example: 'John'
                 email:
