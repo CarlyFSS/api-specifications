@@ -19,7 +19,7 @@ paths:
             description: A checkmark to see if the service is avaiable
             operationId: HealthCheck
             tags:
-                - Health
+                - Healthz
                     
             responses:
                 '200':
