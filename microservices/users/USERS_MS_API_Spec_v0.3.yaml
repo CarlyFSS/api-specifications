@@ -164,6 +164,7 @@ paths:
             
             parameters: 
                 -   $ref: '#/components/parameters/UserID'
+                -   $ref: '#/components/parameters/OptionalRoleID'
             
             requestBody:
                 $ref: '#/components/requestBodies/UpdateUser'
@@ -1067,6 +1068,17 @@ components:
                 maxLength: 36
                 example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
         
+        OptionalRoleID:
+            name: role_id
+            description: A UUID is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID. If not null, set the user role to the corresponding role_id.
+            required: false
+            in: query 
+            schema:
+                type: string
+                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                maxLength: 36
+                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+        
         # Address parameters
         AddressID:
             name: address_id
@@ -1102,16 +1114,6 @@ components:
                 maxLength: 36
                 example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
 
-        OptionalRoleID:
-            name: phone_id
-            description: A UUID is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID.
-            required: true
-            in: query 
-            schema:
-                type: string
-                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
-                maxLength: 36
-                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
     
         # Other parameters
         PaginationLimit:
