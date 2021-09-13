@@ -10,6 +10,8 @@ servers:
         description: API Server
 
 
+# Rota de recuperação de senha nos usuários
+
 paths:
     
     # Health routes
@@ -578,6 +580,7 @@ components:
                 password:
                     description: 'Must have at least: 6 characters, 1 Uppercase letter, 1 number and 1 of the following symbols "!@#$%^&*(){}\-__+.)"'
                     pattern: ^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*(){}\-__+.]){1,}).{6,250}$
+                    minLength: 6
                     maxLength: 250
                     type: string
                     example: '*T!.7_QqJw{HJvNMRGQe'
@@ -646,6 +649,7 @@ components:
                 password:
                     description: 'Must have at least: 6 characters, 1 Uppercase letter, 1 number and 1 of the following symbols "!@#$%^&*(){}\-__+.)"'
                     pattern: ^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*(){}\-__+.]){1,}).{6,250}$
+                    minLength: 6
                     maxLength: 250
                     type: string
                     example: '*T!.7_QqJw{HJvNMRGQe'
@@ -677,6 +681,7 @@ components:
                 password:
                     description: 'Must have at least: 6 characters, 1 Uppercase letter, 1 number and 1 of the following symbols "!@#$%^&*(){}\-__+.)"'
                     pattern: ^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*(){}\-__+.]){1,}).{6,250}$
+                    minLength: 6
                     maxLength: 250
                     type: string
                     example: '*T!.7_QqJw{HJvNMRGQe'
