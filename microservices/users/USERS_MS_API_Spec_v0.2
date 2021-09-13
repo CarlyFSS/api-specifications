@@ -1,1 +1,1336 @@
+openapi: 3.0.3
+
+info:
+  title: Users API
+  description: Simple User API
+  version: '0.2'
+
+servers:
+    -   url: 'https://api.fireheet.com/v1/users'
+        description: API Server
+
+
+paths:
+    
+    # Health routes
+    /v1/healthz:
+        get:
+            summary: Check API health
+            description: A checkmark to see if the service is avaiable
+            operationId: HealthCheck
+            tags:
+                - Health
+                    
+            responses:
+                '200':
+                    $ref: '#/components/responses/Healthz'
+                '400':
+                    $ref: '#/components/responses/Error400'
+                '404':
+                    $ref: '#/components/responses/Error404'
+                '429':
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
+
+    # Roles routes
+    /v1/roles:
+        get:
+            security:
+                - JWTAuth: []
+            summary: Lists all roles
+            description: List all avaiable roles. Roles are (CLIENT | EMPLOYEE | MANAGER | ADMIN | SYSADMIN)
+            operationId: ListAllRolesService
+            tags:
+                - Roles
+
+            parameters:
+                - $ref: '#/components/parameters/PaginationLimit'
+                - $ref: '#/components/parameters/PaginationOffset'
+                    
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                maxItems: 100
+                                items:
+                                    $ref: '#/components/schemas/Role'
+                '400':
+                    $ref: '#/components/responses/Error400'
+                '404':
+                    $ref: '#/components/responses/Error404'
+                '429':
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
+
+    /v1/roles/{role_id}:
+        get:
+            security:
+                - JWTAuth: []
+            summary: Lists an role
+            description: List a role by ID
+            operationId: ListRoleService
+            tags:
+                - Roles
+
+            parameters: 
+                -   $ref: '#/components/parameters/RoleID'
+                    
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Role'
+                '400':
+                    $ref: '#/components/responses/Error400'
+                '404':
+                    $ref: '#/components/responses/Error404'
+                '429':
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
+
+    # Users routes
+    /v1:
+        post:
+            summary: Creates an user
+            description: Post description
+            operationId: CreateUserService
+            tags:
+                - Users
+            
+            requestBody:
+                $ref: '#/components/requestBodies/CreateUser'
+                    
+            responses:
+                '201':
+                    description: Created
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+                '400':
+                    $ref: '#/components/responses/Error400'
+                '404':
+                    $ref: '#/components/responses/Error404'
+                '429':
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
+    
+    /v1/{user_id}:
+        get:
+            security:
+                - JWTAuth: []
+            summary: Lists an user
+            description: List description
+            operationId: ListUserService
+            tags:
+                - Users
+            
+            parameters: 
+                -   $ref: '#/components/parameters/UserID'
+                
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+                '400':
+                    $ref: '#/components/responses/Error400'
+                '404':
+                    $ref: '#/components/responses/Error404'
+                '429':
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
+
+        patch:
+            security:
+                - JWTAuth: []
+            summary: Updates an user
+            description: Patch description
+            operationId: UpdateUserService
+            tags:
+                - Users
+            
+            parameters: 
+                -   $ref: '#/components/parameters/UserID'
+            
+            requestBody:
+                $ref: '#/components/requestBodies/UpdateUser'
+                
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+                '400':
+                    $ref: '#/components/responses/Error400'
+                '404':
+                    $ref: '#/components/responses/Error404'
+                '429':
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
+
+        delete:
+            security:
+                - JWTAuth: []
+            summary: Deletes an user
+            description: Delete description
+            operationId: DeleteUserService
+            tags:
+                - Users
+            
+            parameters: 
+                -   $ref: '#/components/parameters/UserID'
+                
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+                '400':
+                    $ref: '#/components/responses/Error400'
+                '404':
+                    $ref: '#/components/responses/Error404'
+                '429':
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
+
+    /v1/{user_id}/activate:
+        get:
+            security:
+                - JWTAuth: []
+            summary: Activates an user
+            description: Activate description
+            operationId: ActivateUserService
+            tags:
+                - Users
+            
+            parameters: 
+                -   $ref: '#/components/parameters/UserID'
+
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+                '400':
+                    $ref: '#/components/responses/Error400'
+                '404':
+                    $ref: '#/components/responses/Error404'
+                '429':
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
+
+    # Addresses routes
+    /v1/addresses/{user_id}:
+        get:
+            security:
+                - JWTAuth: []
+            summary: Lists all or one user addresses
+            description: If the parameter 'address_id' is equal to *null* if fetches all addresses
+            operationId: ListAddressesService
+            tags:
+                - Addresses
+            
+            parameters: 
+                -   $ref: '#/components/parameters/UserID'
+                -   $ref: '#/components/parameters/AddressID'
+                -   $ref: '#/components/parameters/PaginationLimit'
+                -   $ref: '#/components/parameters/PaginationOffset'
+
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                maxItems: 100
+                                items:
+                                    $ref: '#/components/schemas/Address'
+                '400':
+                    $ref: '#/components/responses/Error400'
+                '404':
+                    $ref: '#/components/responses/Error404'
+                '429':
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
+
+        post:
+            security:
+                - JWTAuth: []
+            summary: Create a user address
+            description: Creates a new user address
+            operationId: CreateAddressService
+            tags:
+                - Addresses
+            
+            parameters: 
+                -   $ref: '#/components/parameters/UserID'
+
+            requestBody:
+                $ref: '#/components/requestBodies/CreateAddress'
+                    
+            responses:
+                '201':
+                    description: Created
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Address'
+                '400':
+                    $ref: '#/components/responses/Error400'
+                '404':
+                    $ref: '#/components/responses/Error404'
+                '429':
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
+
+        patch:
+            security:
+                - JWTAuth: []
+            summary: Updates a user address
+            description: Updates an existing user address
+            operationId: UpdateAddressService
+            tags:
+                - Addresses
+            
+            parameters: 
+                -   $ref: '#/components/parameters/UserID'
+                -   $ref: '#/components/parameters/AddressIDRequired'
+
+            requestBody:
+                $ref: '#/components/requestBodies/UpdateAddress'
+                    
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Address'
+                '400':
+                    $ref: '#/components/responses/Error400'
+                '404':
+                    $ref: '#/components/responses/Error404'
+                '429':
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
+    
+        delete:
+            security:
+                - JWTAuth: []
+            summary: Deletes a user address
+            description: Deletes an existing user address
+            operationId: DeleteAddressService
+            tags:
+                - Addresses
+            
+            parameters: 
+                -   $ref: '#/components/parameters/UserID'
+                -   $ref: '#/components/parameters/AddressIDRequired'
+            
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Address'
+                '400':
+                    $ref: '#/components/responses/Error400'
+                '404':
+                    $ref: '#/components/responses/Error404'
+                '429':
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
+  
+    # Phones routes
+    /v1/phones/{user_id}:
+        post:
+            security:
+                - JWTAuth: []
+            summary: Create a user phone
+            description: Creates a new user phone
+            operationId: CreatePhoneService
+            tags:
+                - Phones
+            
+            parameters: 
+                - $ref: '#/components/parameters/UserID'
+
+            requestBody:
+                $ref: '#/components/requestBodies/CreatePhone'
+                    
+            responses:
+                '201':
+                    description: Created
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Phone'
+                '400':
+                    $ref: '#/components/responses/Error400'
+                '404':
+                    $ref: '#/components/responses/Error404'
+                '429':
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
+
+        get:
+            security:
+                - JWTAuth: []
+            summary: List a user phone
+            description: Lists an existing user phone
+            operationId: ListPhoneService
+            tags:
+                - Phones
+            
+            parameters: 
+                -   $ref: '#/components/parameters/UserID'
+                -   $ref: '#/components/parameters/PhoneID'
+                    
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Phone'
+                '400':
+                    $ref: '#/components/responses/Error400'
+                '404':
+                    $ref: '#/components/responses/Error404'
+                '429':
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
+
+        patch:
+            security:
+                - JWTAuth: []
+            summary: Updates a user phone
+            description: Updates an existing user phone
+            operationId: UpdatePhoneService
+            tags:
+                - Phones
+            
+            parameters: 
+                -   $ref: '#/components/parameters/UserID'
+                -   $ref: '#/components/parameters/PhoneID'
+
+            requestBody:
+                $ref: '#/components/requestBodies/UpdatePhone'
+                    
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Phone'
+                '400':
+                    $ref: '#/components/responses/Error400'
+                '404':
+                    $ref: '#/components/responses/Error404'
+                '429':
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
+
+        delete:
+            security:
+                - JWTAuth: []
+            summary: Deletes a user phone
+            description: Deletes an existing user phone
+            operationId: DeletePhoneService
+            tags:
+                - Phones
+            
+            parameters: 
+                -   $ref: '#/components/parameters/UserID'
+                -   $ref: '#/components/parameters/PhoneID'
+                    
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Phone'
+                '400':
+                    $ref: '#/components/responses/Error400'
+                '404':
+                    $ref: '#/components/responses/Error404'
+                '429':
+                    $ref: '#/components/responses/Error429'
+                'default':
+                    $ref: '#/components/responses/ErrorDefault'
+
+
+components:
+    requestBodies:
+        # User request bodies
+        CreateUser:
+            description: Create user infos
+            required: true
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/CreateUserDTO'
+
+        UpdateUser:
+            description: Updates user infos
+            required: true
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/UpdateUserDTO'
+
+        # Address request bodies
+        CreateAddress:
+            description: Create address request body
+            required: true
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/CreateAddressDTO'
+        
+        UpdateAddress:
+            description: Update address infos
+            required: true
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/UpdateAddressDTO'
+        
+
+        # Phone request bodies
+        CreatePhone:
+            description: Create phone infos
+            required: true
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/CreatePhoneDTO'
+
+        UpdatePhone:
+            description: Update phone infos
+            required: true
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/UpdatePhoneDTO'
+
+
+    securitySchemes:
+        JWTAuth:
+            type: http
+            scheme: bearer
+            bearerFormat: JWT
+            description: JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object
+
+    
+    schemas:
+
+        # Roles schemas
+        Role:
+            additionalProperties: false
+            type: object
+            properties:
+                id:
+                    type: string
+                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    maxLength: 36
+                    example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+                name:
+                    type: string
+                    pattern: ^(CLIENT|EMPLOYEE|MANAGER|ADMIN|SYSADMIN)$
+                    maxLength: 10
+                    example: 'CLIENT'
+                created_at:
+                    type: string
+                    description: When the entity was created
+                    pattern: ^([0-9]{4}\-[0-9]{2}\-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z){1}$
+                    maxLength: 24
+                    example: '1999-12-31T02:00:00.000Z'
+                updated_at:
+                    type: string
+                    description: When the entity was last updated
+                    pattern: ^([0-9]{4}\-[0-9]{2}\-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z){1}$
+                    maxLength: 24
+                    example: '1999-12-31T02:00:00.000Z'
+
+        # Users schemas
+        User:
+            additionalProperties: false
+            type: object
+            properties:
+                id:
+                    type: string
+                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    maxLength: 36
+                    example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+                role_id:
+                    type: string
+                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    maxLength: 36
+                    example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+                main_address_id:
+                    type: string
+                    nullable: true
+                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    maxLength: 36
+                    example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+                phone_id:
+                    type: string
+                    nullable: true
+                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    maxLength: 36
+                    example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+                name:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 100
+                    example: 'John'
+                email:
+                    type: string
+                    pattern: ^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$
+                    maxLength: 50
+                    example: 'email@email.com'
+                password:
+                    description: 'Must have at least: 6 characters, 1 Uppercase letter, 1 number and 1 of the following symbols "!@#$%^&*(){}\-__+.)"'
+                    pattern: ^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*(){}\-__+.]){1,}).{6,250}$
+                    maxLength: 250
+                    type: string
+                    example: '*T!.7_QqJw{HJvNMRGQe'
+                sex:
+                    type: string
+                    nullable: true
+                    pattern: ^(male|female)$
+                    maxLength: 6
+                    example: 'male'
+                birthdate:
+                    type: string
+                    pattern: ^([0-9]{4}\-[0-9]{2}\-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z){1}$
+                    maxLength: 24
+                    example: '1999-12-31T02:00:00.000Z'
+                document_number:
+                    type: string
+                    pattern: ^([1-9]{11})$
+                    maxLength: 11
+                    example: '99999999999'
+                created_at:
+                    type: string
+                    description: When the entity was created
+                    pattern: ^([0-9]{4}\-[0-9]{2}\-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z){1}$
+                    maxLength: 24
+                    example: '1999-12-31T02:00:00.000Z'
+                updated_at:
+                    type: string
+                    description: When the entity was last updated
+                    pattern: ^([0-9]{4}\-[0-9]{2}\-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z){1}$
+                    maxLength: 24
+                    example: '1999-12-31T02:00:00.000Z'
+                delete_at:
+                    type: string
+                    nullable: true
+                    description: When the entity was deleted
+                    pattern: ^([0-9]{4}\-[0-9]{2}\-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z){1}$
+                    maxLength: 24
+                    example: '1999-12-31T02:00:00.000Z'
+
+        CreateUserDTO:
+            additionalProperties: false
+            type: object
+            required:
+                - name
+                - email
+                - password
+                - birthdate
+                - document_number
+            properties:
+                role_id:
+                    type: string
+                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    maxLength: 36
+                    example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+                name:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 100
+                    example: 'John'
+                email:
+                    type: string
+                    pattern: ^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$
+                    maxLength: 50
+                    example: 'email@email.com'
+                password:
+                    description: 'Must have at least: 6 characters, 1 Uppercase letter, 1 number and 1 of the following symbols "!@#$%^&*(){}\-__+.)"'
+                    pattern: ^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*(){}\-__+.]){1,}).{6,250}$
+                    maxLength: 250
+                    type: string
+                    example: '*T!.7_QqJw{HJvNMRGQe'
+                sex:
+                    type: string
+                    pattern: ^(male|female)$
+                    maxLength: 6
+                    example: 'male'
+                birthdate:
+                    type: string
+                    pattern: ^([1-9]{2}\/[1-9]{2}\/[1-9]{4})$
+                    maxLength: 10
+                    example: '01/02/1234'
+                document_number:
+                    type: string
+                    pattern: ^([1-9]{11})$
+                    maxLength: 11
+                    example: '99999999999'
+
+        UpdateUserDTO:
+            additionalProperties: false
+            type: object
+            properties:
+                name:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 100
+                    example: 'John'
+                email:
+                    type: string
+                    pattern: ^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$
+                    maxLength: 50
+                    example: 'email@email.com'
+                password:
+                    description: 'Must have at least: 6 characters, 1 Uppercase letter, 1 number and 1 of the following symbols "!@#$%^&*(){}\-__+.)"'
+                    pattern: ^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*(){}\-__+.]){1,}).{6,250}$
+                    maxLength: 250
+                    type: string
+                    example: '*T!.7_QqJw{HJvNMRGQe'
+
+        # Addresses schemas
+        Address:
+            additionalProperties: false
+            type: object
+            properties:
+                id:
+                    type: string
+                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    maxLength: 36
+                    example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+                user_id:
+                    type: string
+                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    maxLength: 36
+                    example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+                country:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    example: 'Brazil'
+                    maxLength: 30
+                state:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'São Paulo'
+                city:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'St John'
+                street:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 50
+                    example: 'Street Something'
+                number:
+                    type: integer
+                    format: int2
+                    minimum: 0
+                    maximum: 32000
+                    example: 536
+                district:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'South District'
+                complement:
+                    type: string
+                    nullable: true
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'Next to a red store'
+                postal_code:
+                    type: string
+                    pattern: ^[0-9]{4,12}$
+                    minLength: 4
+                    maxLength: 12
+                    example: '99999999'
+                description:
+                    type: string
+                    nullable: true
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 25
+                    description: If it is null, the system will generate a name like 'Others' can be changed after to any name you like
+                    example: 'Home'
+                created_at:
+                    type: string
+                    description: When the entity was created
+                    pattern: ^([0-9]{4}\-[0-9]{2}\-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z){1}$
+                    maxLength: 24
+                    example: '1999-12-31T02:00:00.000Z'
+                updated_at:
+                    type: string
+                    description: When the entity was last updated
+                    pattern: ^([0-9]{4}\-[0-9]{2}\-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z){1}$
+                    maxLength: 24
+                    example: '1999-12-31T02:00:00.000Z'
+                delete_at:
+                    type: string
+                    nullable: true
+                    description: When the entity was deleted
+                    pattern: ^([0-9]{4}\-[0-9]{2}\-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z){1}$
+                    maxLength: 24
+                    example: '1999-12-31T02:00:00.000Z'
+
+        CreateAddressDTO:
+            additionalProperties: false
+            type: object
+            required:
+                - country
+                - state
+                - city
+                - street
+                - number
+                - district
+                - postal_code
+            properties:
+                country:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    example: 'Brazil'
+                    maxLength: 30
+                state:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'São Paulo'
+                city:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'St John'
+                street:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 50
+                    example: 'Street Something'
+                number:
+                    type: integer
+                    format: int32
+                    minimum: 0
+                    maximum: 32000
+                    example: 536
+                district:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'South District'
+                complement:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'Next to a red store'
+                postal_code:
+                    type: string
+                    pattern: ^[0-9]{4,12}$
+                    minLength: 4
+                    maxLength: 12
+                    example: '99999999'
+                description:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 10
+                    description: If it is null, the system will generate a name like 'Others' can be changed after to any name you like
+                    example: 'Home'
+
+        UpdateAddressDTO:
+            additionalProperties: false
+            type: object
+            properties:
+                country:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    example: 'Brazil'
+                    maxLength: 30
+                state:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'São Paulo'
+                city:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'St John'
+                street:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 50
+                    example: 'Street Something'
+                number:
+                    type: integer
+                    format: int32
+                    minimum: 0
+                    maximum: 32000
+                    example: 536
+                district:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'South District'
+                complement:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 30
+                    example: 'Next to a red store'
+                postal_code:
+                    type: string
+                    pattern: ^[0-9]{4,12}$
+                    minLength: 4
+                    maxLength: 12
+                    example: '99999999'
+                description:
+                    type: string
+                    pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
+                    maxLength: 10
+                    description: If it is null, the system will generate a name like 'Others' can be changed after to any name you like
+                    example: 'Home'
+
+        # Phones schemas
+        Phone:
+            additionalProperties: false
+            type: object
+            properties:
+                id:
+                    type: string
+                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    maxLength: 36
+                    example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+                user_id:
+                    type: string
+                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    maxLength: 36
+                    example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+                country_code:
+                    type: string
+                    pattern: ^\+[0-9\-]{1,7}$
+                    maxLength: 8
+                    example: '+99'
+                prefix:
+                    type: string
+                    pattern: ^[0-9]{1,4}$
+                    maxLength: 4
+                    example: '099'
+                number: 
+                    type: string
+                    pattern: ^[0-9]{4,10}$
+                    maxLength: 10
+                    example: '999999999'
+                verified:
+                    description: Controls if the phone number has been verified or not
+                    example: true
+                    type: boolean
+                created_at:
+                    type: string
+                    description: When the entity was created
+                    pattern: ^([0-9]{4}\-[0-9]{2}\-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z){1}$
+                    maxLength: 24
+                    example: '1999-12-31T02:00:00.000Z'
+                updated_at:
+                    type: string
+                    description: When the entity was last updated
+                    pattern: ^([0-9]{4}\-[0-9]{2}\-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z){1}$
+                    maxLength: 24
+                    example: '1999-12-31T02:00:00.000Z'
+                delete_at:
+                    type: string
+                    description: When the entity was deleted
+                    pattern: ^([0-9]{4}\-[0-9]{2}\-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z){1}$
+                    maxLength: 24
+                    example: '1999-12-31T02:00:00.000Z'
+
+        CreatePhoneDTO:
+            additionalProperties: false
+            type: object
+            required:
+                - country_code
+                - prefix
+                - number
+            properties:
+                country_code:
+                    type: string
+                    pattern: ^\+[0-9\-]{1,7}$
+                    maxLength: 8
+                    example: '+99'
+                prefix:
+                    type: string
+                    pattern: ^[0-9]{1,4}$
+                    maxLength: 4
+                    example: '099'
+                number: 
+                    type: string
+                    pattern: ^[0-9]{4,10}$
+                    maxLength: 10
+                    example: '999999999'
+
+        UpdatePhoneDTO:
+            additionalProperties: false
+            type: object
+            properties:
+                country_code:
+                    type: string
+                    pattern: ^\+[0-9\-]{1,7}$
+                    maxLength: 8
+                    example: '+99'
+                prefix:
+                    type: string
+                    pattern: ^[0-9]{1,4}$
+                    maxLength: 4
+                    example: '099'
+                number: 
+                    type: string
+                    pattern: ^[0-9]{4,10}$
+                    maxLength: 10
+                    example: '999999999'
+
+
+    parameters:
+
+        # Users parameters
+        UserID:
+            name: user_id
+            description: A UUID is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID.
+            required: true
+            in: path 
+            schema:
+                type: string
+                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                maxLength: 36
+                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+        
+        # Roles parameters
+        RoleID:
+            name: role_id
+            description: A UUID is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID.
+            required: true
+            in: path 
+            schema:
+                type: string                
+                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                maxLength: 36
+                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+        
+        # Address parameters
+        AddressIDRequired:
+            name: address_id
+            description: A UUID is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID.
+            required: true
+            in: query 
+            schema:
+                type: string
+                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                maxLength: 36
+                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+        
+        AddressID:
+            name: address_id
+            description: A UUID is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID.
+            required: false
+            in: query 
+            schema:
+                type: string
+                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                maxLength: 36
+                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+
+        # Phones parameters
+        PhoneID:
+            name: phone_id
+            description: A UUID is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID.
+            required: true
+            in: query 
+            schema:
+                type: string
+                pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                maxLength: 36
+                example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+    
+        # Other parameters
+        PaginationLimit:
+            name: limit
+            description: 'How many rows to return (Default: 10)'
+            required: false
+            in: query 
+            schema:
+                type: integer
+                format: int32
+                minimum: 1
+                maximum: 100
+                example: 5
+
+        PaginationOffset:
+            name: offset
+            description: 'From which row to return (Default: 1)'
+            required: false
+            in: query 
+            schema:
+                type: integer
+                format: int32
+                minimum: 1
+                maximum: 32000
+                example: 5
+    
+    
+    responses:
+
+        Healthz:
+            description: Success
+            content:
+                application/json:
+                    schema:
+                        type: object
+                        properties:
+                            status:
+                                type: string
+                                pattern: ^(ok)$
+                                maxLength: 2
+                                example: 'ok'
+                            info:
+                                type: object
+                                properties:
+                                    Database:
+                                        type: object
+                                        properties:
+                                            status:
+                                                type: string
+                                                pattern: ^(up|down)$
+                                                maxLength: 4
+                                                example: 'up'
+                                    Cache:
+                                        type: object
+                                        properties:
+                                            status:
+                                                type: string
+                                                pattern: ^(up|down)$
+                                                maxLength: 4
+                                                example: 'down'
+                            error:
+                                type: object
+                            details:
+                                type: object
+                                properties:
+                                    Database:
+                                        type: object
+                                        properties:
+                                            status:
+                                                type: string
+                                                pattern: ^(up|down)$
+                                                maxLength: 4
+                                                example: 'up'
+                                    Cache:
+                                        type: object
+                                        properties:
+                                            status:
+                                                type: string
+                                                pattern: ^(up|down)$
+                                                maxLength: 4
+                                                example: 'down'
+  
+        # Errors
+        Error400:
+            
+            description: 'Bad Request Exception'
+            content:
+                application/json:
+                    schema:
+                        additionalProperties: false
+                        type: object
+                        properties:
+                            status_code:
+                                type: integer
+                                format: int32
+                                minimum: 400
+                                maximum: 400
+                                example: 400
+                            message:
+                                type: string
+                                pattern: ^([a-zA-Z'"!\/\.\-].{1,})$
+                                maxLength: 250
+                                example: 'ID "X" is not a valid UUID!'
+                            path:
+                                type: string
+                                pattern: ^(\/v[1-9]\/users\/[a-z]{1,20}\/[a-zA-Z1-9]{1,})$
+                                maxLength: 250
+                                example: '/v1/users/X/Y'
+                            method:
+                                type: string
+                                pattern: ^(POST|GET|PATCH|PUT|DELETE|HEAD)$
+                                maxLength: 6
+                                example: 'POST'
+                            timestamp:
+                                type: string
+                                pattern: ^([0-9]{4}\-[0-9]{2}\-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z)$
+                                maxLength: 24
+                                example: '9999-99-99T99:99:99.999Z'
+        
+        Error404:
+            description: 'Not Found Exception'
+            content:
+                application/json:
+                    schema:
+                        additionalProperties: false
+                        type: object
+                        properties:
+                            status_code:
+                                type: integer
+                                format: int32
+                                minimum: 404
+                                maximum: 404
+                                example: 404
+                            message:
+                                type: string
+                                pattern: ^([a-zA-Z'"!\/\.\-].{1,})$
+                                maxLength: 250
+                                example: 'User ID "X" does not exist!'
+                            path:
+                                type: string
+                                pattern: ^(\/v[1-9]\/users\/[a-z]{1,20}\/[a-zA-Z1-9]{1,})$
+                                maxLength: 250
+                                example: '/v1/users/X/Y'
+                            method:
+                                type: string
+                                pattern: ^(POST|GET|PATCH|PUT|DELETE|HEAD)$
+                                maxLength: 6
+                                example: 'POST'
+                            timestamp:
+                                type: string
+                                pattern: ^([0-9]{4}\-[0-9]{2}\-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z)$
+                                maxLength: 24
+                                example: '9999-99-99T99:99:99.999Z'
+
+        Error429:
+            description: 'Too Many Requests Exception'
+            content:
+                application/json:
+                    schema:
+                        additionalProperties: false
+                        type: object
+                        properties:
+                            status_code:
+                                type: integer
+                                format: int32
+                                minimum: 429
+                                maximum: 429
+                                example: 429
+                            message:
+                                type: string
+                                pattern: ^([a-zA-Z'"!\/\.\-].{1,})$
+                                maxLength: 250
+                                example: 'Too many requests at path X'
+                            path:
+                                type: string
+                                pattern: ^(\/v[1-9]\/users\/[a-z]{1,20}\/[a-zA-Z1-9]{1,})$
+                                maxLength: 250
+                                example: '/v1/users/X/Y'
+                            method:
+                                type: string
+                                pattern: ^(POST|GET|PATCH|PUT|DELETE|HEAD)$
+                                maxLength: 6
+                                example: 'POST'
+                            timestamp:
+                                type: string
+                                pattern: ^([0-9]{4}\-[0-9]{2}\-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z)$
+                                maxLength: 24
+                                example: '9999-99-99T99:99:99.999Z'
+        
+        ErrorDefault:
+            description: 'Internal Server Error Exception '
+            content:
+                application/json:
+                    schema:
+                        additionalProperties: false
+                        type: object
+                        properties:
+                            status_code:
+                                type: integer
+                                format: int32
+                                minimum: 500
+                                maximum: 500
+                                example: 500
+                            message:
+                                type: string
+                                pattern: ^([a-zA-Z'"!\/\.\-].{1,})$
+                                maxLength: 250
+                                example: 'Internal Server Error'
+                            path:
+                                type: string
+                                pattern: ^(\/v[1-9]\/users\/[a-z]{1,20}\/[a-zA-Z1-9]{1,})$
+                                maxLength: 250
+                                example: '/v1/users/X/Y'
+                            method:
+                                type: string
+                                pattern: ^(POST|GET|PATCH|PUT|DELETE|HEAD)$
+                                maxLength: 6
+                                example: 'POST'
+                            timestamp:
+                                type: string
+                                pattern: ^([0-9]{4}\-[0-9]{2}\-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z)$
+                                maxLength: 24
+                                example: '9999-99-99T99:99:99.999Z'
+
+
+
+
+
+
+
+
+
+
 
