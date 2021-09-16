@@ -514,7 +514,7 @@ components:
             properties:
                 id:
                     type: string
-                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    description: A UUID v4 is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID v4.
                     pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                     maxLength: 36
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
@@ -543,27 +543,27 @@ components:
             properties:
                 id:
                     type: string
-                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    description: A UUID v4 is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID v4.
                     pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                     maxLength: 36
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
                 role_id:
                     type: string
-                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    description: A UUID v4 is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID v4.
                     pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                     maxLength: 36
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
                 main_address_id:
                     type: string
                     nullable: true
-                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    description: A UUID v4 is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID v4.
                     pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                     maxLength: 36
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
                 phone_id:
                     type: string
                     nullable: true
-                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    description: A UUID v4 is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID v4.
                     pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                     maxLength: 36
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
@@ -632,7 +632,7 @@ components:
             properties:
                 role_id:
                     type: string
-                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    description: A UUID v4 is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID v4.
                     pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                     maxLength: 36
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
@@ -685,6 +685,18 @@ components:
                     maxLength: 250
                     type: string
                     example: '*T!.7_QqJw{HJvNMRGQe'
+                main_address_id:
+                    type: string
+                    description: A UUID v4 is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID v4 v4.
+                    pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    maxLength: 36
+                    example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
+                phone_id:
+                    type: string
+                    description: A UUID v4 is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID v4 v4.
+                    pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+                    maxLength: 36
+                    example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
 
         # Addresses schemas
         Address:
@@ -693,13 +705,13 @@ components:
             properties:
                 id:
                     type: string
-                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    description: A UUID v4 is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID v4 v4.
                     pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                     maxLength: 36
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
                 user_id:
                     type: string
-                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    description: A UUID v4 is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID v4 v4.
                     pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                     maxLength: 36
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
@@ -893,7 +905,7 @@ components:
             properties:
                 id:
                     type: string
-                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    description: A UUID v4 is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID v4.
                     pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                     maxLength: 36
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
@@ -956,13 +968,13 @@ components:
             properties:
                 id:
                     type: string
-                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    description: A UUID v4 is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID v4.
                     pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                     maxLength: 36
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
                 user_id:
                     type: string
-                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    description: A UUID v4 is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID v4.
                     pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                     maxLength: 36
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
@@ -1054,7 +1066,7 @@ components:
             properties:
                 id:
                     type: string
-                    description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                    description: A UUID v4 is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID v4.
                     pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                     maxLength: 36
                     example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
@@ -1084,7 +1096,7 @@ components:
         # Users parameters
         UserID:
             name: user_id
-            description: A UUID is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID.
+            description: A UUID v4 is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID v4.
             required: true
             in: path 
             schema:
@@ -1096,7 +1108,7 @@ components:
         # Roles parameters
         RoleID:
             name: role_id
-            description: A UUID is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID.
+            description: A UUID v4 is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID v4.
             required: true
             in: path 
             schema:
@@ -1107,7 +1119,7 @@ components:
         
         OptionalRoleID:
             name: role_id
-            description: A UUID is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID. If not null, set the user role to the corresponding role_id.
+            description: A UUID v4 is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID v4. If not null, set the user role to the corresponding role_id.
             required: false
             in: query 
             schema:
@@ -1119,7 +1131,7 @@ components:
         # Address parameters
         AddressID:
             name: address_id
-            description: A UUID is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID.
+            description: A UUID v4 is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID v4.
             required: true
             in: query 
             schema:
@@ -1130,7 +1142,7 @@ components:
         
         OptionalAddressID:
             name: address_id
-            description: A UUID is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID.
+            description: A UUID v4 is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID v4.
             required: false
             in: query 
             schema:
@@ -1142,7 +1154,7 @@ components:
         # Phones parameters
         PhoneID:
             name: phone_id
-            description: A UUID is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID.
+            description: A UUID v4 is simply a **128-bit** unique value that can be expressed as either a larger number or a string. Must be an **valid** UUID v4.
             required: true
             in: query 
             schema:
@@ -1190,14 +1202,10 @@ components:
                         properties:
                             id:
                                 type: string
-                                description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                                description: A UUID v4 is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID v4.
                                 pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                                 maxLength: 36
                                 example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
-                            address:
-                                $ref: '#/components/schemas/AddressResponse' 
-                            phone:
-                                $ref: '#/components/schemas/PhoneResponse'
                             name:
                                 type: string
                                 pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
@@ -1224,6 +1232,10 @@ components:
                                 pattern: ^([1-9]{11})$
                                 maxLength: 11
                                 example: '99999999999'
+                            address:
+                                $ref: '#/components/schemas/AddressResponse' 
+                            phone:
+                                $ref: '#/components/schemas/PhoneResponse'
 
         BasicUser:
             description: 'A basic user'
@@ -1235,7 +1247,7 @@ components:
                         properties:
                             id:
                                 type: string
-                                description: A UUID is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID.
+                                description: A UUID v4 is simply a 128-bit unique value that can be expressed as either a larger number or a string. Must be an *valid* UUID v4.
                                 pattern: '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
                                 maxLength: 36
                                 example: 'da695b93-2bd6-404a-87da-fe3e8b53b940'
@@ -1350,7 +1362,7 @@ components:
                                 type: string
                                 pattern: ^([a-zA-Z'"!\/\.\-].{1,})$
                                 maxLength: 250
-                                example: 'ID "X" is not a valid UUID!'
+                                example: 'ID "X" is not a valid UUID v4!'
                             path:
                                 type: string
                                 pattern: ^(\/v[1-9]\/users\/[a-z]{1,20}\/[a-zA-Z1-9]{1,})$
