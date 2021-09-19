@@ -720,6 +720,12 @@ components:
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                     example: 'Brazil'
                     maxLength: 30
+                zip_code:
+                    type: string
+                    pattern: ^[0-9]{4,12}$
+                    minLength: 4
+                    maxLength: 12
+                    example: '99999999'
                 state:
                     type: string
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
@@ -752,12 +758,7 @@ components:
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                     maxLength: 30
                     example: 'Next to a red store'
-                zip_code:
-                    type: string
-                    pattern: ^[0-9]{4,12}$
-                    minLength: 4
-                    maxLength: 12
-                    example: '99999999'
+                
                 description:
                     type: string
                     nullable: true
