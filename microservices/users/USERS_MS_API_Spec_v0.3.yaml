@@ -597,7 +597,7 @@ components:
                     example: '1999-12-31T02:00:00.000Z'
                 document_number:
                     type: string
-                    pattern: ^([1-9]{11})$
+                    pattern: ^([0-9]{11})$
                     maxLength: 11
                     example: '99999999999'
                 created_at:
@@ -655,12 +655,12 @@ components:
                     example: '*T!.7_QqJw{HJvNMRGQe'
                 birthdate:
                     type: string
-                    pattern: ^([1-9]{2}\/[1-9]{2}\/[1-9]{4})$
+                    pattern: ^([0-9]{2}\/[0-9]{2}\/[0-9]{4})$
                     maxLength: 10
                     example: '01/02/1234'
                 document_number:
                     type: string
-                    pattern: ^([1-9]{11})$
+                    pattern: ^([0-9]{11})$
                     maxLength: 11
                     example: '99999999999'
 
