@@ -1168,26 +1168,26 @@ components:
         # Other parameters
         PaginationLimit:
             name: limit
-            description: 'How many rows to return (Default: 10)'
+            description: 'How many rows to return (Default: 5)'
             required: false
             in: query 
             schema:
                 type: integer
                 format: int32
-                minimum: 1
+                minimum: 0
                 maximum: 100
                 example: 5
 
         PaginationOffset:
             name: offset
-            description: 'From which row to return (Default: 1)'
+            description: 'From which row to return (Default: 0)'
             required: false
             in: query 
             schema:
                 type: integer
                 format: int32
-                minimum: 1
-                maximum: 32000
+                minimum: 0
+                maximum: 2147483600
                 example: 5
     
     
