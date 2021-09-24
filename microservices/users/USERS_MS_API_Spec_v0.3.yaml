@@ -880,7 +880,7 @@ components:
                     minimum: 0
                     maximum: 32000
                     example: 536
-                neighborhood:
+                district:
                     type: string
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                     maxLength: 30
@@ -890,7 +890,7 @@ components:
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                     maxLength: 30
                     example: 'Next to a red store'
-                zip_code:
+                postal_code:
                     type: string
                     pattern: ^[0-9]{4,12}$
                     minLength: 4
@@ -939,7 +939,7 @@ components:
                     minimum: 0
                     maximum: 32000
                     example: 536
-                neighborhood:
+                district:
                     type: string
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                     maxLength: 30
@@ -950,7 +950,7 @@ components:
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                     maxLength: 30
                     example: 'Next to a red store'
-                zip_code:
+                postal_code:
                     type: string
                     pattern: ^[0-9]{4,12}$
                     minLength: 4
