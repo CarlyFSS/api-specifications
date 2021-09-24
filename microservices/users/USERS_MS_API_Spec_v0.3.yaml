@@ -12,6 +12,9 @@ servers:
 
 # Rota de recuperação de senha nos usuários
 
+# Pensar melhor no restore do user, quando deletado ele fica como se fosse "bloqueado", e para voltar, precisa atualizar seu cadastro inteiro
+# podendo ser um PUT em vez de GET
+
 paths:
     
     # Health routes
@@ -795,8 +798,8 @@ components:
                 - city
                 - street
                 - number
-                - district
-                - postal_code
+                - neighborhood
+                - zip_code
             properties:
                 country:
                     type: string
@@ -824,7 +827,7 @@ components:
                     minimum: 0
                     maximum: 32000
                     example: 536
-                district:
+                neighborhood:
                     type: string
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                     maxLength: 30
@@ -834,7 +837,7 @@ components:
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                     maxLength: 30
                     example: 'Next to a red store'
-                postal_code:
+                zip_code:
                     type: string
                     pattern: ^[0-9]{4,12}$
                     minLength: 4
@@ -877,7 +880,7 @@ components:
                     minimum: 0
                     maximum: 32000
                     example: 536
-                district:
+                neighborhood:
                     type: string
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                     maxLength: 30
@@ -887,7 +890,7 @@ components:
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                     maxLength: 30
                     example: 'Next to a red store'
-                postal_code:
+                zip_code:
                     type: string
                     pattern: ^[0-9]{4,12}$
                     minLength: 4
@@ -936,7 +939,7 @@ components:
                     minimum: 0
                     maximum: 32000
                     example: 536
-                district:
+                neighborhood:
                     type: string
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                     maxLength: 30
@@ -947,7 +950,7 @@ components:
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                     maxLength: 30
                     example: 'Next to a red store'
-                postal_code:
+                zip_code:
                     type: string
                     pattern: ^[0-9]{4,12}$
                     minLength: 4
