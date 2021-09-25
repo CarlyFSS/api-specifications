@@ -573,11 +573,13 @@ components:
                 name:
                     type: string
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$
+                    minLength: 1
                     maxLength: 100
                     example: 'John'
                 email:
                     type: string
                     pattern: ^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$
+                    minLength: 10
                     maxLength: 50
                     example: 'email@email.com'
                 password:
@@ -880,7 +882,7 @@ components:
                     minimum: 0
                     maximum: 32000
                     example: 536
-                district:
+                neighborhood:
                     type: string
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                     maxLength: 30
@@ -890,7 +892,7 @@ components:
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                     maxLength: 30
                     example: 'Next to a red store'
-                postal_code:
+                zip_code:
                     type: string
                     pattern: ^[0-9]{4,12}$
                     minLength: 4
@@ -939,7 +941,7 @@ components:
                     minimum: 0
                     maximum: 32000
                     example: 536
-                district:
+                neighborhood:
                     type: string
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                     maxLength: 30
@@ -950,7 +952,7 @@ components:
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                     maxLength: 30
                     example: 'Next to a red store'
-                postal_code:
+                zip_code:
                     type: string
                     pattern: ^[0-9]{4,12}$
                     minLength: 4
