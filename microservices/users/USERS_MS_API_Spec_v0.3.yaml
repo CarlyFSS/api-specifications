@@ -724,7 +724,8 @@ components:
                     type: string
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                     example: 'Brazil'
-                    maxLength: 30
+                    minLength: 4
+                    maxLength: 60
                 zip_code:
                     type: string
                     pattern: ^[0-9]{4,12}$
