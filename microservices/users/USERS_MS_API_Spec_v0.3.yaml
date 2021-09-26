@@ -764,7 +764,6 @@ components:
                     pattern: ^[#.0-9a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s,-]+$
                     maxLength: 30
                     example: 'Next to a red store'
-                
                 description:
                     type: string
                     nullable: true
